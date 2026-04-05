@@ -1,0 +1,23 @@
+product_id,name,category,price,rating,review_count
+P001,Winter Parka,jacket,229.0,4.8,512
+P002,Fleece Lined Sweater,sweater,69.0,4.4,201
+P003,Down Filled Coat,coat,389.0,4.9,911
+P004,Thermal Insulated Boots,boots,149.0,4.5,421
+P005,Woven Wool Scarf,scarf,29.0,4.2,102
+P006,Waterproof Gloves,gloves,49.0,4.3,231
+P007,Cable Knit Hat,hat,25.0,4.1,67
+P008,Long Sleeve Thermal,thermal,39.0,4.6,189
+P009,Snow Pants,pants,129.0,4.7,612
+P010,Warm Fleece Socks,socks,19.0,4.4,120
+P011,Mountain Jacket,jacket,279.0,4.8,801
+P012,Cashmere Sweater,sweater,199.0,4.9,1102
+P013,Trench Coat,coat,329.0,4.5,421
+P014,Shearling Boots,boots,299.0,4.6,321
+P015,Faux Fur Scarf,scarf,39.0,4.3,201
+P016,Touchscreen Gloves,gloves,59.0,4.4,250
+P017,Beanie Hat,hat,22.0,4.2,90
+P018,Base Layer Thermal,thermal,49.0,4.7,401
+P019,Ski Pants,pants,199.0,4.8,701
+P020,Merino Socks,socks,29.0,4.5,150
+P021,Parka Coat,coat,249.0,4.4,351
+P022,Fleece Lined Jacket,jacket,189.0,4.6,312

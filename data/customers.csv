@@ -1,0 +1,101 @@
+customer_id,name,email,segment,avg_order_value,total_orders,preferred_send_time,age_range,income_bracket,city,state
+C0001,Oliver Brown,oliver.brown1797@yahoo.com,vip,380.78,35,evening_workday,35-44,<50k,Buffalo,NY
+C0002,Rowan White,rowan.white9065@gmail.com,returning,175.24,3,evening_workday,25-34,150k+,Detroit,MI
+C0003,Reese Garcia,reese.garcia5574@gmail.com,new,63.48,0,unknown,45-54,100-150k,Madison,WI
+C0004,Maren Nguyen,maren.nguyen1744@outlook.com,returning,197.83,10,evening_workday,65+,100-150k,Providence,RI
+C0005,Skylar Miller,skylar.miller8690@gmail.com,new,87.92,1,unknown,25-34,<50k,Buffalo,NY
+C0006,Aiden White,aiden.white950@yahoo.com,returning,202.92,3,evening_workday,55-64,100-150k,Milwaukee,WI
+C0007,Kalliope Kim,kalliope.kim2061@yahoo.com,returning,172.37,10,evening_workday,45-54,150k+,Indianapolis,IN
+C0008,Easton Harris,easton.harris8836@yahoo.com,returning,179.81,8,evening_workday,55-64,50-75k,Des Moines,IA
+C0009,Sutton Nguyen,sutton.nguyen3682@gmail.com,vip,288.19,22,evening_workday,35-44,75-100k,Milwaukee,WI
+C0010,Justine Brown,justine.brown515@outlook.com,returning,89.92,5,evening_workday,18-24,75-100k,Boston,MA
+C0011,Tyler Brooks,tyler.brooks9356@icloud.com,returning,146.17,9,weekend_noon,25-34,<50k,Indianapolis,IN
+C0012,Paisley Sanchez,paisley.sanchez5805@hotmail.com,new,72.89,0,unknown,18-24,75-100k,Portland,ME
+C0013,Camila Thompson,camila.thompson1791@yahoo.com,new,55.33,1,unknown,18-24,100-150k,Pittsburgh,PA
+C0014,Sydney Martin,sydney.martin7261@icloud.com,returning,93.71,12,weekend_noon,25-34,50-75k,Burlington,VT
+C0015,Abigail Miller,abigail.miller2725@hotmail.com,vip,335.41,21,weekend_noon,65+,150k+,Boston,MA
+C0016,Cole Lewis,cole.lewis7455@outlook.com,vip,315.36,39,evening_workday,25-34,<50k,New York,NY
+C0017,Teagan Taylor,teagan.taylor999@outlook.com,returning,88.0,11,weekend_noon,25-34,<50k,Chicago,IL
+C0018,Cassandra Sanchez,cassandra.sanchez3045@gmail.com,returning,163.3,12,evening_workday,25-34,150k+,Des Moines,IA
+C0019,Austin Harris,austin.harris9741@gmail.com,vip,378.2,34,evening_workday,18-24,150k+,Detroit,MI
+C0020,Ruby Martin,ruby.martin3347@outlook.com,new,59.09,1,unknown,35-44,150k+,Ann Arbor,MI
+C0021,Charlotte Hall,charlotte.hall153@hotmail.com,returning,166.96,11,weekend_noon,35-44,150k+,Chicago,IL
+C0022,Kaitlyn Sanchez,kaitlyn.sanchez5719@gmail.com,vip,461.37,31,evening_workday,35-44,75-100k,Philadelphia,PA
+C0023,Marissa Lewis,marissa.lewis8667@gmail.com,returning,173.5,10,weekend_noon,45-54,100-150k,Columbus,OH
+C0024,Vivian Jackson,vivian.jackson1754@icloud.com,returning,101.76,6,evening_workday,55-64,<50k,Pittsburgh,PA
+C0025,Lucas Brooks,lucas.brooks4326@icloud.com,new,79.08,0,unknown,25-34,75-100k,Minneapolis,MN
+C0026,Ethan Kim,ethan.kim2144@outlook.com,returning,102.62,9,evening_workday,45-54,<50k,Cleveland,OH
+C0027,Cody Nguyen,cody.nguyen2443@icloud.com,returning,85.04,7,weekend_noon,35-44,<50k,Cleveland,OH
+C0028,Sasha Thompson,sasha.thompson654@outlook.com,returning,109.41,5,evening_workday,35-44,<50k,Buffalo,NY
+C0029,Jessica Lewis,jessica.lewis6659@icloud.com,new,99.96,0,unknown,45-54,150k+,Milwaukee,WI
+C0030,Dylan Lewis,dylan.lewis5443@hotmail.com,vip,436.72,23,weekend_noon,55-64,<50k,Burlington,VT
+C0031,Daniel Kim,daniel.kim3270@hotmail.com,returning,128.95,5,evening_workday,25-34,<50k,Pittsburgh,PA
+C0032,Morgan Thompson,morgan.thompson4574@outlook.com,returning,169.81,8,evening_workday,25-34,50-75k,Portland,ME
+C0033,Christopher Garcia,christopher.garcia4280@yahoo.com,new,86.45,1,unknown,25-34,<50k,Madison,WI
+C0034,Taylor Martin,taylor.martin9933@icloud.com,returning,96.19,11,evening_workday,35-44,100-150k,Rochester,NY
+C0035,Paige White,paige.white8822@yahoo.com,returning,130.99,3,weekend_noon,45-54,<50k,New York,NY
+C0036,Jackson Kim,jackson.kim4921@icloud.com,vip,278.97,34,evening_workday,35-44,100-150k,Minneapolis,MN
+C0037,Jeremiah Patel,jeremiah.patel6212@yahoo.com,returning,166.17,6,weekend_noon,35-44,50-75k,Chicago,IL
+C0038,Natalie Thompson,natalie.thompson9940@outlook.com,returning,145.1,9,weekend_noon,25-34,50-75k,Boston,MA
+C0039,Rylan Nguyen,rylan.nguyen2781@gmail.com,new,62.7,1,unknown,35-44,150k+,Des Moines,IA
+C0040,Leah Miller,leah.miller401@gmail.com,returning,114.28,9,evening_workday,45-54,50-75k,Hartford,CT
+C0041,Bryson Garcia,bryson.garcia9432@yahoo.com,new,97.47,1,unknown,35-44,150k+,Philadelphia,PA
+C0042,Eric Brown,eric.brown1747@hotmail.com,returning,110.64,10,weekend_noon,25-34,100-150k,Hartford,CT
+C0043,Remi Lee,remi.lee7613@icloud.com,returning,218.3,11,evening_workday,25-34,100-150k,Madison,WI
+C0044,Madison Lee,madison.lee8977@hotmail.com,returning,205.61,9,evening_workday,35-44,100-150k,Columbus,OH
+C0045,Landon Hall,landon.hall7940@yahoo.com,returning,118.44,3,weekend_noon,45-54,50-75k,Hartford,CT
+C0046,Jace Brooks,jace.brooks8850@gmail.com,new,51.07,0,unknown,25-34,50-75k,Hartford,CT
+C0047,Samuel Garcia,samuel.garcia8891@hotmail.com,returning,138.21,5,evening_workday,45-54,<50k,Buffalo,NY
+C0048,Savannah Lee,savannah.lee321@icloud.com,new,70.43,0,unknown,55-64,75-100k,Detroit,MI
+C0049,Titus Hall,titus.hall6866@icloud.com,vip,419.21,22,weekend_noon,45-54,100-150k,Chicago,IL
+C0050,Adriana Lee,adriana.lee6625@yahoo.com,returning,197.67,4,evening_workday,35-44,<50k,Providence,RI
+C0051,Victoria Nguyen,victoria.nguyen445@gmail.com,vip,385.68,16,weekend_noon,18-24,50-75k,Madison,WI
+C0052,Isabella Garcia,isabella.garcia5356@outlook.com,vip,423.59,32,evening_workday,18-24,50-75k,Burlington,VT
+C0053,Gianna Miller,gianna.miller8838@gmail.com,returning,219.99,7,evening_workday,25-34,<50k,Cleveland,OH
+C0054,Jaime Jackson,jaime.jackson4052@yahoo.com,returning,197.49,11,weekend_noon,45-54,75-100k,Philadelphia,PA
+C0055,Emily Chen,emily.chen7620@outlook.com,returning,187.37,4,weekend_noon,35-44,<50k,Buffalo,NY
+C0056,Julian Patel,julian.patel5097@gmail.com,new,86.29,1,unknown,45-54,<50k,Pittsburgh,PA
+C0057,Mckenna Taylor,mckenna.taylor3979@gmail.com,returning,177.61,6,evening_workday,25-34,100-150k,Detroit,MI
+C0058,Hannah Nguyen,hannah.nguyen673@outlook.com,vip,350.48,31,weekend_noon,45-54,100-150k,Rochester,NY
+C0059,Liam Patel,liam.patel7103@outlook.com,returning,168.98,9,evening_workday,18-24,50-75k,Minneapolis,MN
+C0060,Kieran Patel,kieran.patel4426@icloud.com,new,104.66,1,unknown,25-34,75-100k,Cleveland,OH
+C0061,Tessa Jackson,tessa.jackson1420@outlook.com,returning,203.43,5,weekend_noon,25-34,100-150k,Ann Arbor,MI
+C0062,Malachi Brown,malachi.brown471@hotmail.com,new,108.08,0,unknown,35-44,50-75k,Ann Arbor,MI
+C0063,Aubrey Jackson,aubrey.jackson4527@icloud.com,returning,81.42,5,weekend_noon,45-54,50-75k,Milwaukee,WI
+C0064,Makayla Taylor,makayla.taylor8042@hotmail.com,returning,191.01,3,weekend_noon,35-44,100-150k,Cleveland,OH
+C0065,Elijah Brown,elijah.brown7754@icloud.com,returning,154.33,8,weekend_noon,45-54,50-75k,Detroit,MI
+C0066,Amelia Taylor,amelia.taylor4119@yahoo.com,vip,218.61,20,evening_workday,25-34,100-150k,Madison,WI
+C0067,Kennedy Miller,kennedy.miller7934@outlook.com,returning,181.44,10,evening_workday,65+,100-150k,Madison,WI
+C0068,William Davis,william.davis4953@gmail.com,returning,179.12,4,evening_workday,45-54,50-75k,Pittsburgh,PA
+C0069,Alyssa Lee,alyssa.lee8043@gmail.com,returning,202.18,11,evening_workday,35-44,100-150k,New York,NY
+C0070,Noah Lee,noah.lee7828@gmail.com,returning,195.1,8,evening_workday,35-44,50-75k,Indianapolis,IN
+C0071,Caleb Harris,caleb.harris9222@outlook.com,returning,91.93,5,evening_workday,35-44,<50k,Ann Arbor,MI
+C0072,Kayla Lewis,kayla.lewis8562@hotmail.com,returning,143.07,9,evening_workday,35-44,100-150k,Cleveland,OH
+C0073,Kevin Hall,kevin.hall9989@gmail.com,returning,212.66,5,weekend_noon,65+,50-75k,Ann Arbor,MI
+C0074,Harper Martin,harper.martin2848@icloud.com,new,46.01,0,unknown,45-54,<50k,Providence,RI
+C0075,Brianna White,brianna.white4633@hotmail.com,returning,89.97,5,evening_workday,35-44,<50k,Rochester,NY
+C0076,Gage Brooks,gage.brooks8923@yahoo.com,vip,387.24,25,evening_workday,45-54,150k+,Ann Arbor,MI
+C0077,Margaret Miller,margaret.miller9750@icloud.com,new,113.7,1,unknown,18-24,100-150k,Philadelphia,PA
+C0078,Ronan Brooks,ronan.brooks8091@hotmail.com,returning,91.26,2,evening_workday,45-54,150k+,Chicago,IL
+C0079,Jasmine Taylor,jasmine.taylor9425@icloud.com,vip,484.25,25,evening_workday,35-44,<50k,Minneapolis,MN
+C0080,Michael Brown,michael.brown2974@icloud.com,returning,141.02,9,weekend_noon,35-44,75-100k,Burlington,VT
+C0081,Brayden Patel,brayden.patel2635@outlook.com,vip,311.73,39,weekend_noon,25-34,50-75k,Indianapolis,IN
+C0082,Joshua Sanchez,joshua.sanchez5154@outlook.com,returning,125.26,8,evening_workday,45-54,75-100k,Detroit,MI
+C0083,Zoe Martin,zoe.martin3074@icloud.com,vip,295.77,39,evening_workday,35-44,75-100k,Boston,MA
+C0084,Lily Tran,lily.tran4720@hotmail.com,new,110.47,1,unknown,25-34,75-100k,New York,NY
+C0085,Ava Morales,ava.morales225@icloud.com,returning,137.12,5,evening_workday,45-54,100-150k,Rochester,NY
+C0086,Trevor Sanchez,trevor.sanchez8166@outlook.com,vip,342.84,25,weekend_noon,35-44,<50k,Pittsburgh,PA
+C0087,Nixon Harris,nixon.harris6285@yahoo.com,returning,209.06,10,weekend_noon,65+,50-75k,Indianapolis,IN
+C0088,Cameron Kim,cameron.kim6799@outlook.com,new,114.74,1,unknown,55-64,50-75k,Buffalo,NY
+C0089,Cortez Garcia,cortez.garcia9502@hotmail.com,new,109.22,1,unknown,45-54,100-150k,Chicago,IL
+C0090,Parker Davis,parker.davis5273@yahoo.com,returning,217.31,5,evening_workday,25-34,100-150k,Milwaukee,WI
+C0091,Brock Davis,brock.davis7750@hotmail.com,returning,134.05,12,evening_workday,55-64,50-75k,Hartford,CT
+C0092,Myles Davis,myles.davis8230@icloud.com,new,66.56,0,unknown,35-44,<50k,Buffalo,NY
+C0093,Ashton Brooks,ashton.brooks2362@hotmail.com,vip,458.7,17,evening_workday,18-24,150k+,Columbus,OH
+C0094,Casey Brown,casey.brown5384@icloud.com,returning,133.2,7,weekend_noon,25-34,100-150k,Providence,RI
+C0095,Julian Sanchez,julian.sanchez1122@yahoo.com,new,90.49,1,unknown,55-64,<50k,Indianapolis,IN
+C0096,Micah Davis,micah.davis1647@hotmail.com,vip,233.24,27,weekend_noon,35-44,<50k,Philadelphia,PA
+C0097,Tatum White,tatum.white7057@yahoo.com,vip,258.14,34,evening_workday,25-34,<50k,New York,NY
+C0098,Kelsey Garcia,kelsey.garcia3946@hotmail.com,returning,207.8,4,weekend_noon,25-34,<50k,Burlington,VT
+C0099,Kylie Taylor,kylie.taylor7623@outlook.com,returning,174.87,4,weekend_noon,35-44,100-150k,Providence,RI
+C0100,Anthony Brooks,anthony.brooks4098@hotmail.com,returning,198.34,5,weekend_noon,65+,50-75k,Milwaukee,WI

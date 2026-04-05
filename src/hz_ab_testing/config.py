@@ -96,6 +96,30 @@ ABANDONMENT_WINDOW_DAYS = 7
 # (vs. noise). Higher = clearer signal → easier to derive pool in Phase 2.
 PREFERRED_WINDOW_PROB = 0.75
 
+# ---- Phase 2: segmentation classifier --------------------------------------
+# Customers with fewer than this many events lack enough signal → Pool C.
+MIN_EVENTS_FOR_CLASSIFICATION = 3
+# Share of events that must fall into a window for that window to "win".
+POOL_DOMINANCE_THRESHOLD = 0.55
+# Clicks count more than opens when inferring timing preference.
+EVENT_WEIGHTS = {"open": 1.0, "click": 2.0}
+# Weekday evening window (local time, but we treat UTC timestamps as-is for demo).
+EVENING_HOURS = range(17, 22)    # 17:00–21:59
+WEEKEND_NOON_HOURS = range(10, 14)  # 10:00–13:59
+
+# ---- Phase 2: variant assignment -------------------------------------------
+VARIANTS = ["seasonal_discount", "urgency", "personalized_rec"]
+# 33/33/34 split — the "34" goes to the last variant.
+ASSIGNMENTS_CSV = DATA_DIR / "ab_assignments.csv"
+
+# ---- Phase 3: email generation ---------------------------------------------
+BRAND_NAME = "Hazel Apparel"
+DISCOUNT_PCT = 20
+DISCOUNT_EXPIRY = "48 hours"
+EMAIL_WORD_MIN = 60
+EMAIL_WORD_MAX = 100
+EMAIL_CTA = "[Complete Your Purchase]"
+
 # ---- LLM -------------------------------------------------------------------
 HYPERBOLIC_BASE_URL = "https://api.hyperbolic.xyz/v1"
 LLM_MODEL = "meta-llama/Llama-3.3-70B-Instruct"

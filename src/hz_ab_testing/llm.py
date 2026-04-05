@@ -79,8 +79,9 @@ def _extract_json(text: str) -> Any:
         lines = text.splitlines()
         lines = [ln for ln in lines if not ln.startswith("```")]
         text = "\n".join(lines).strip()
+    # strict=False allows raw newlines/tabs inside JSON strings (common LLM output).
     try:
-        return json.loads(text)
+        return json.loads(text, strict=False)
     except json.JSONDecodeError:
         # best-effort: find the first { or [ and last } or ]
         start_obj = text.find("{")
@@ -90,4 +91,4 @@ def _extract_json(text: str) -> Any:
             raise
         start = min(candidates)
         end = max(text.rfind("}"), text.rfind("]"))
-        return json.loads(text[start : end + 1])
+        return json.loads(text[start : end + 1], strict=False)

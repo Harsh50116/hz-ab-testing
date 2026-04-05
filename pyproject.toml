@@ -17,6 +17,8 @@ dev = [
 
 [project.scripts]
 generate-data = "hz_ab_testing.cli:main"
+segment-and-assign = "hz_ab_testing.phase2_cli:main"
+generate-emails = "hz_ab_testing.emails_cli:main"
 
 [build-system]
 requires = ["setuptools>=68"]

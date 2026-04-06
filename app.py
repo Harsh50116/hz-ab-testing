@@ -140,7 +140,7 @@ def page_customer_explorer(data: dict[str, pd.DataFrame]) -> None:
     with col_rand:
         st.write("")  # spacer to align with selectbox
         st.write("")
-        if st.button("🎲 Random", use_container_width=True):
+        if st.button("Random Customer", use_container_width=True):
             st.session_state.selected_customer = random.choice(customers["customer_id"].tolist())
 
     with col_pick:
@@ -159,10 +159,10 @@ def page_customer_explorer(data: dict[str, pd.DataFrame]) -> None:
 
     st.divider()
 
-    # Profile card + pool/variant
-    left, right = st.columns([1, 1])
-    with left:
-        st.subheader("Profile")
+    # Profile — name/metrics on left, demographic details on right
+    st.subheader("Profile")
+    prof_left, prof_right = st.columns([1, 1])
+    with prof_left:
         st.markdown(
             f"""
             **{customer['name']}** &nbsp; `{customer['customer_id']}`
@@ -175,73 +175,83 @@ def page_customer_explorer(data: dict[str, pd.DataFrame]) -> None:
             ("Avg Order", f"${customer['avg_order_value']:.0f}"),
             ("Total Orders", str(customer["total_orders"])),
         ])
-        st.markdown(
-            f"""
-            - **Age range:** {customer['age_range']}
-            - **Income:** {customer['income_bracket']}
-            - **Location:** {customer['city']}, {customer['state']}
-            - **Preferred send time (truth):** `{customer['preferred_send_time']}`
-            """
+    with prof_right:
+        details_df = pd.DataFrame(
+            [
+                ("Age range", customer["age_range"]),
+                ("Income", customer["income_bracket"]),
+                ("Location", f"{customer['city']}, {customer['state']}"),
+                ("Preferred send time (truth)", customer["preferred_send_time"]),
+            ],
+            columns=["Attribute", "Value"],
         )
+        st.dataframe(details_df, hide_index=True, use_container_width=True)
 
-    with right:
+    st.divider()
+
+    # Assignment + Engagement Timing (side-by-side)
+    col_assign, col_timing = st.columns([1, 1])
+
+    with col_assign:
         st.subheader("Assignment")
         render_metric_row([
             ("Derived Pool", POOL_LABEL.get(assignment["derived_pool"], assignment["derived_pool"])),
+        ])
+        render_metric_row([
             ("Variant", VARIANT_LABEL.get(assignment["assigned_variant"], assignment["assigned_variant"])),
         ])
         st.caption(VARIANT_STRATEGY.get(assignment["assigned_variant"], ""))
 
-    st.divider()
-
-    # Cart
-    st.subheader("Abandoned Cart")
-    if len(cust_cart) == 0:
-        st.info("No cart data for this customer.")
-    else:
-        cart_display = cust_cart[["product_name", "category", "price", "quantity"]].rename(
-            columns={"product_name": "Product", "category": "Category", "price": "Price", "quantity": "Qty"}
-        )
-        cart_display["Price"] = cart_display["Price"].map(lambda x: f"${x:.0f}")
-        st.dataframe(cart_display, hide_index=True, use_container_width=True)
-        c1, c2 = st.columns(2)
-        c1.metric("Cart total", f"${cust_cart.iloc[0]['cart_total']:.0f}")
-        c2.metric("Abandoned at", cust_cart.iloc[0]["abandoned_at"].strftime("%b %d, %Y %H:%M UTC"))
-
-    st.divider()
-
-    # Engagement dot-plot
-    st.subheader("Engagement Timing")
-    st.caption("Each dot is an open or click event — hour of day (UTC). This is what the pool was derived from.")
-    if len(cust_events) == 0:
-        st.info("No engagement events for this customer.")
-    else:
-        jitter = [random.Random(i).uniform(-0.25, 0.25) for i in range(len(cust_events))]
-        plot_df = cust_events.copy()
-        plot_df["y"] = jitter
-        fig = px.scatter(
-            plot_df,
-            x="hour",
-            y="y",
-            color="event_type",
-            hover_data={"occurred_at": True, "dow": True, "hour": True, "y": False, "event_type": True},
-            color_discrete_map={"open": "#4a90e2", "click": "#e67e22"},
-        )
-        fig.update_traces(marker=dict(size=12, opacity=0.8, line=dict(width=1, color="white")))
-        fig.update_xaxes(range=[-0.5, 23.5], dtick=2, title="Hour of day (UTC)")
-        fig.update_yaxes(range=[-1, 1], showticklabels=False, title="")
-        fig.update_layout(height=220, margin=dict(l=20, r=20, t=20, b=40), legend_title="")
-        # shade evening workday band for context
-        fig.add_vrect(x0=17.5, x1=22.5, fillcolor="#2c5f2d", opacity=0.06, line_width=0,
-                      annotation_text="evening workday band", annotation_position="top left",
-                      annotation_font_size=10)
-        st.plotly_chart(fig, use_container_width=True)
+    with col_timing:
+        st.subheader("Engagement Timing")
+        st.caption("Each dot is an open or click event — hour of day (UTC). This is what the pool was derived from.")
+        if len(cust_events) == 0:
+            st.info("No engagement events for this customer.")
+        else:
+            jitter = [random.Random(i).uniform(-0.25, 0.25) for i in range(len(cust_events))]
+            plot_df = cust_events.copy()
+            plot_df["y"] = jitter
+            fig = px.scatter(
+                plot_df,
+                x="hour",
+                y="y",
+                color="event_type",
+                hover_data={"occurred_at": True, "dow": True, "hour": True, "y": False, "event_type": True},
+                color_discrete_map={"open": "#4a90e2", "click": "#e67e22"},
+            )
+            fig.update_traces(marker=dict(size=12, opacity=0.8, line=dict(width=1, color="white")))
+            fig.update_xaxes(range=[-0.5, 23.5], dtick=2, title="Hour of day (UTC)")
+            fig.update_yaxes(range=[-1, 1], showticklabels=False, title="")
+            fig.update_layout(height=220, margin=dict(l=20, r=20, t=20, b=40), legend_title="")
+            # shade evening workday band for context
+            fig.add_vrect(x0=17.5, x1=22.5, fillcolor="#2c5f2d", opacity=0.06, line_width=0,
+                          annotation_text="evening workday band", annotation_position="top left",
+                          annotation_font_size=10)
+            st.plotly_chart(fig, use_container_width=True)
 
     st.divider()
 
-    # Generated email
-    st.subheader("Generated Email")
-    render_email_card(assignment["email_subject"], assignment["email_body"], to_name=customer["name"])
+    # Cart + Generated Email (side-by-side)
+    col_cart, col_email = st.columns([1, 1])
+
+    with col_cart:
+        st.subheader("Abandoned Cart")
+        if len(cust_cart) == 0:
+            st.info("No cart data for this customer.")
+        else:
+            cart_display = cust_cart[["product_name", "category", "price", "quantity"]].rename(
+                columns={"product_name": "Product", "category": "Category", "price": "Price", "quantity": "Qty"}
+            )
+            cart_display["Price"] = cart_display["Price"].map(lambda x: f"${x:.0f}")
+            st.dataframe(cart_display, hide_index=True, use_container_width=True)
+            render_metric_row([
+                ("Cart total", f"${cust_cart.iloc[0]['cart_total']:.0f}"),
+                ("Abandoned at", cust_cart.iloc[0]["abandoned_at"].strftime("%b %d, %Y %H:%M UTC")),
+            ])
+
+    with col_email:
+        st.subheader("Generated Email")
+        render_email_card(assignment["email_subject"], assignment["email_body"], to_name=customer["name"])
 
 
 # --------------------------------------------------------------------------- #
@@ -316,6 +326,9 @@ def page_segmentation(data: dict[str, pd.DataFrame]) -> None:
     st.caption("The 33/33/34 split landed across the three variants. Randomized within each pool.")
     col_a, col_b = st.columns(2)
 
+    chart_height = 380
+    chart_margin = dict(l=20, r=20, t=40, b=40)
+
     with col_a:
         var_counts = assignments["assigned_variant"].value_counts().reset_index()
         var_counts.columns = ["variant", "count"]
@@ -326,12 +339,14 @@ def page_segmentation(data: dict[str, pd.DataFrame]) -> None:
             color_discrete_sequence=["#2c5f2d", "#e67e22", "#4a90e2"],
         )
         fig.update_traces(textposition="outside")
-        fig.update_layout(showlegend=False, height=340, margin=dict(l=20, r=20, t=20, b=40),
-                          xaxis_title="")
+        fig.update_layout(
+            title="Overall Split",
+            showlegend=False, height=chart_height, margin=chart_margin,
+            xaxis_title="",
+        )
         st.plotly_chart(fig, use_container_width=True)
 
     with col_b:
-        st.markdown("**Variants × Pools**")
         pv = assignments.groupby(["derived_pool", "assigned_variant"]).size().reset_index(name="count")
         pv["pool_label"] = pv["derived_pool"].map(POOL_LABEL)
         pv["variant_label"] = pv["assigned_variant"].map(VARIANT_LABEL)
@@ -339,8 +354,12 @@ def page_segmentation(data: dict[str, pd.DataFrame]) -> None:
             pv, x="pool_label", y="count", color="variant_label", text="count", barmode="stack",
             color_discrete_sequence=["#2c5f2d", "#e67e22", "#4a90e2"],
         )
-        fig.update_layout(height=340, margin=dict(l=20, r=20, t=20, b=40),
-                          legend_title="Variant", xaxis_title="")
+        fig.update_layout(
+            title="Variants × Pools",
+            height=chart_height, margin=chart_margin,
+            legend_title="Variant", xaxis_title="",
+            legend=dict(orientation="h", yanchor="top", y=-0.15, xanchor="center", x=0.5),
+        )
         st.plotly_chart(fig, use_container_width=True)
 
 

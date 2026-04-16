@@ -199,16 +199,22 @@ def generate_all_emails(
                 end="",
                 flush=True,
             )
-        try:
-            email = generate_email(client, variant, first_name, items)
-            out.at[i, "email_subject"] = email.subject
-            out.at[i, "email_body"] = email.body
-            if progress:
-                print(" ok")
-        except Exception as exc:  # noqa: BLE001
-            if progress:
-                print(f" FAILED: {exc}")
-            raise
+        for attempt in range(3):
+            try:
+                email = generate_email(client, variant, first_name, items)
+                out.at[i, "email_subject"] = email.subject
+                out.at[i, "email_body"] = email.body
+                if progress:
+                    print(" ok")
+                break
+            except Exception as exc:  # noqa: BLE001
+                if attempt < 2:
+                    if progress:
+                        print(f" retry ({exc})", end="", flush=True)
+                else:
+                    if progress:
+                        print(f" FAILED: {exc}")
+                    raise
 
     return out
 

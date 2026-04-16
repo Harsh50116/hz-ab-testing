@@ -53,6 +53,10 @@ def load_data() -> dict[str, pd.DataFrame]:
     events["hour"] = events["occurred_at"].dt.hour
     events["dow"] = events["occurred_at"].dt.day_name()
 
+    for col in ("email_subject", "email_body"):
+        if col not in assignments.columns:
+            assignments[col] = None
+
     return {
         "customers": customers,
         "carts": carts,
@@ -255,7 +259,10 @@ def page_customer_explorer(data: dict[str, pd.DataFrame]) -> None:
 
     with col_email:
         st.subheader("Generated Email")
-        render_email_card(assignment["email_subject"], assignment["email_body"], to_name=customer["name"])
+        if pd.notna(assignment.get("email_subject")) and pd.notna(assignment.get("email_body")):
+            render_email_card(assignment["email_subject"], assignment["email_body"], to_name=customer["name"])
+        else:
+            st.info("Emails have not been generated yet. Run the email generation step first.")
 
 
 # --------------------------------------------------------------------------- #
@@ -400,7 +407,10 @@ def page_email_variants(data: dict[str, pd.DataFrame]) -> None:
             st.caption(VARIANT_STRATEGY[variant])
 
             sample = merged[merged["assigned_variant"] == variant].iloc[0]
-            render_email_card(sample["email_subject"], sample["email_body"], to_name=sample["name"])
+            if pd.notna(sample.get("email_subject")) and pd.notna(sample.get("email_body")):
+                render_email_card(sample["email_subject"], sample["email_body"], to_name=sample["name"])
+            else:
+                st.info("Email not generated yet.")
 
     st.divider()
 
@@ -417,7 +427,10 @@ def page_email_variants(data: dict[str, pd.DataFrame]) -> None:
             pool = merged[merged["assigned_variant"] == variant]
             if len(pool) >= 2:
                 sample = pool.iloc[1]
-                render_email_card(sample["email_subject"], sample["email_body"], to_name=sample["name"])
+                if pd.notna(sample.get("email_subject")) and pd.notna(sample.get("email_body")):
+                    render_email_card(sample["email_subject"], sample["email_body"], to_name=sample["name"])
+                else:
+                    st.info("Email not generated yet.")
             else:
                 st.info("Not enough samples.")
 

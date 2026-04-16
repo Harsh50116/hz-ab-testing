@@ -41,7 +41,7 @@ Brand voice rules:
 - Body length: 60-150 words.
 - You MUST use the customer's EXACT first name as provided — do NOT invent or substitute a different name. Use it once, near the opening.
 - Reference the specific item(s) in their cart by name.
-- End the body with the CTA placeholder exactly: {config.EMAIL_CTA}
+- Do NOT include any CTA placeholder or bracketed text like [Complete Your Purchase].
 - Sign off: "— The {config.BRAND_NAME} Team"
 
 Return ONLY valid JSON with these keys:

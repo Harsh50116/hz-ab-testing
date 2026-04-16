@@ -529,15 +529,20 @@ def page_agentic(data: dict[str, pd.DataFrame]) -> None:
             if "agentic_customer" not in st.session_state:
                 st.session_state.agentic_customer = customers.iloc[0]["customer_id"]
 
+            def _on_select_change():
+                st.session_state.agentic_customer = option_to_id[
+                    st.session_state._agentic_select
+                ]
+
             current_option = id_to_option[st.session_state.agentic_customer]
-            picked = st.selectbox(
+            st.selectbox(
                 "Select customer",
                 options,
                 index=options.index(current_option),
-                key="agentic_select",
+                key="_agentic_select",
                 label_visibility="collapsed",
+                on_change=_on_select_change,
             )
-            st.session_state.agentic_customer = option_to_id[picked]
 
             cid = st.session_state.agentic_customer
             customer = customers[customers["customer_id"] == cid].iloc[0]
@@ -553,11 +558,6 @@ def page_agentic(data: dict[str, pd.DataFrame]) -> None:
                 unsafe_allow_html=True,
             )
 
-            if st.button("Random", use_container_width=True, key="agentic_rand"):
-                st.session_state.agentic_customer = random.choice(
-                    customers["customer_id"].tolist()
-                )
-                st.rerun()
 
 
     # ---- Assemble context ----
@@ -638,14 +638,7 @@ def page_agentic(data: dict[str, pd.DataFrame]) -> None:
 
             if needs_generation:
                 with email_placeholder.container():
-                    st.markdown(
-                        '<div style="display:flex;flex-direction:column;align-items:center;'
-                        'justify-content:center;min-height:300px;color:#9ca3af;">'
-                        '<div style="font-size:14px;margin-top:12px;">Generating email...</div>'
-                        '</div>',
-                        unsafe_allow_html=True,
-                    )
-                    with st.spinner("LLM is analyzing customer and writing email..."):
+                    with st.spinner("Generating email..."):
                         try:
                             client = HyperbolicClient()
                             result = generate_agentic_email(client, ctx)

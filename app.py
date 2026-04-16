@@ -12,9 +12,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from hz_ab_testing.context import assemble_context
-from hz_ab_testing.agentic import generate_agentic_email
-from hz_ab_testing.llm import HyperbolicClient
 
 DATA_DIR = Path(__file__).parent / "data"
 
@@ -498,6 +495,10 @@ def _render_email_full(subject: str, body: str, to_email: str) -> None:
 
 
 def page_agentic(data: dict[str, pd.DataFrame]) -> None:
+    from hz_ab_testing.context import assemble_context
+    from hz_ab_testing.agentic import generate_agentic_email
+    from hz_ab_testing.llm import HyperbolicClient
+
     customers = data["customers"]
     carts = data["carts"]
     events = data["events"]

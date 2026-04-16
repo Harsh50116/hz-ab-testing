@@ -41,7 +41,6 @@ def _summarize_engagement(events_df: pd.DataFrame, customer_id: str) -> str:
 
     opens = len(cust_events[cust_events["event_type"] == "open"])
     clicks = len(cust_events[cust_events["event_type"] == "click"])
-    open_rate_desc = f"{opens} opens, {clicks} clicks out of {total} events"
 
     # Timing pattern
     hours = cust_events["occurred_at"].dt.hour
@@ -51,13 +50,13 @@ def _summarize_engagement(events_df: pd.DataFrame, customer_id: str) -> str:
 
     patterns = []
     if evening_count / total > 0.4:
-        patterns.append("mostly engages on weekday evenings")
+        patterns.append("evenings")
     if weekend_noon / total > 0.3:
-        patterns.append("often engages weekend midday")
+        patterns.append("weekends")
     if not patterns:
-        patterns.append("no strong timing pattern")
+        patterns.append("mixed")
 
-    return f"{open_rate_desc}; {', '.join(patterns)}"
+    return f"{opens}o/{clicks}c, {', '.join(patterns)}"
 
 
 def _parse_interests(raw: str) -> list[str]:

@@ -39,7 +39,7 @@ Available strategies (pick exactly one):
 Brand voice rules:
 - Friendly, warm, conversational tone. No exclamation stacking, no ALL CAPS.
 - Body length: 60-150 words.
-- Use the customer's first name once, near the opening.
+- You MUST use the customer's EXACT first name as provided — do NOT invent or substitute a different name. Use it once, near the opening.
 - Reference the specific item(s) in their cart by name.
 - End the body with the CTA placeholder exactly: {config.EMAIL_CTA}
 - Sign off: "— The {config.BRAND_NAME} Team"
@@ -65,7 +65,8 @@ def _build_user_prompt(ctx: CustomerContext) -> str:
 
     interests_str = ", ".join(ctx.lifestyle_interests) if ctx.lifestyle_interests else "none identified"
 
-    return f"""Customer context:
+    return f"""Customer first name: {ctx.first_name}
+(IMPORTANT: Use EXACTLY this name in the email — "{ctx.first_name}" — do not change it.)
 
 FIRST-PARTY BUSINESS DATA:
 - Cart contents:

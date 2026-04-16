@@ -453,30 +453,48 @@ STRATEGY_LABELS = {
     "personalized_rec": "Personalized Rec",
 }
 
+# Dot colors: green = first-party, blue = channel, red = third-party (Faraday)
+_DOT_GREEN = "#16a34a"
+_DOT_BLUE = "#2563eb"
+_DOT_RED = "#dc2626"
 
-def _node_container(title: str, content_fn, *, arrow: bool = False) -> None:
-    """Render a rounded-border node card. content_fn writes the interior via st calls."""
-    if arrow:
-        st.markdown(
-            '<div style="text-align:center;font-size:28px;color:#657786;margin:-8px 0 -8px 0;">&#8594;</div>',
-            unsafe_allow_html=True,
-        )
-    st.markdown(
-        f"""<div style="
-            border: 2px solid #e1e4e8;
-            border-radius: 14px;
-            padding: 20px 18px 14px 18px;
-            background: #181c20;
-            min-height: 280px;
-        ">
-        <div style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">
-            {title}
-        </div>
-        """,
-        unsafe_allow_html=True,
+
+def _param_row(dot_color: str, label: str, value: str) -> str:
+    return (
+        f'<tr>'
+        f'<td style="padding:6px 12px 6px 0;white-space:nowrap;vertical-align:middle;width:40%;">'
+        f'<span style="color:{dot_color};font-size:9px;">&#9679;</span>&nbsp;'
+        f'<span style="color:#9ca3af;font-size:13px;">{label}</span></td>'
+        f'<td style="padding:6px 0;text-align:right;font-size:13px;font-weight:600;'
+        f'vertical-align:middle;overflow-wrap:break-word;word-break:break-word;">{value}</td>'
+        f'</tr>'
     )
-    content_fn()
-    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _render_email_full(subject: str, body: str, to_email: str) -> None:
+    """Render a richer email preview matching the mockup style."""
+    html = f"""
+    <div style="
+        border: 1px solid #e1e4e8;
+        border-radius: 10px;
+        background: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        overflow: hidden;
+    ">
+        <div style="padding: 20px 22px;">
+            <div style="font-size: 17px; font-weight: 700; color: #14171a; margin-bottom: 6px; line-height: 1.3;">
+                {subject}
+            </div>
+            <div style="font-size: 11px; color: #657786; margin-bottom: 16px;">
+                To: {to_email} &middot; From: Hazel Apparel
+            </div>
+            <div style="font-size: 14px; color: #2d3748; line-height: 1.65; white-space: pre-line;">
+                {body}
+            </div>
+        </div>
+    </div>
+    """
+    st.markdown(html, unsafe_allow_html=True)
 
 
 def page_agentic(data: dict[str, pd.DataFrame]) -> None:
@@ -490,180 +508,182 @@ def page_agentic(data: dict[str, pd.DataFrame]) -> None:
         "The LLM receives full customer context and autonomously picks the best strategy + writes the email."
     )
 
-    # ---- Node 1: Customer selector ----
-    col_cust, col_arrow1, col_params, col_arrow2, col_email = st.columns(
-        [1.2, 0.15, 1.5, 0.15, 2]
-    )
+    # ---- 3-column layout with arrows ----
+    col_cust, col_a1, col_params, col_a2, col_email = st.columns([1, 0.08, 1.6, 0.08, 2])
 
+    # ---- Node 1: CUSTOMER ----
     with col_cust:
-        st.markdown(
-            '<div style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">Customer</div>',
-            unsafe_allow_html=True,
-        )
-        options = customers.apply(
-            lambda r: f"{r['customer_id']} — {r['name']}", axis=1
-        ).tolist()
-        id_to_option = dict(zip(customers["customer_id"], options))
-        option_to_id = {v: k for k, v in id_to_option.items()}
-
-        if "agentic_customer" not in st.session_state:
-            st.session_state.agentic_customer = customers.iloc[0]["customer_id"]
-
-        current_option = id_to_option[st.session_state.agentic_customer]
-        picked = st.selectbox(
-            "Select customer",
-            options,
-            index=options.index(current_option),
-            key="agentic_select",
-            label_visibility="collapsed",
-        )
-        st.session_state.agentic_customer = option_to_id[picked]
-
-        if st.button("Random", use_container_width=True, key="agentic_rand"):
-            st.session_state.agentic_customer = random.choice(
-                customers["customer_id"].tolist()
+        with st.container(border=True):
+            st.markdown(
+                '<div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;'
+                'color:#9ca3af;font-weight:600;margin-bottom:8px;">Customer</div>',
+                unsafe_allow_html=True,
             )
-            st.rerun()
 
-        # View customer data toggle
-        cid = st.session_state.agentic_customer
-        customer = customers[customers["customer_id"] == cid].iloc[0]
+            options = customers.apply(
+                lambda r: f"{r['customer_id']} — {r['name']}", axis=1
+            ).tolist()
+            id_to_option = dict(zip(customers["customer_id"], options))
+            option_to_id = {v: k for k, v in id_to_option.items()}
 
-        with st.expander("View full customer record"):
-            detail_rows = [
-                ("Name", customer["name"]),
-                ("Email", customer["email"]),
-                ("Segment", customer["segment"]),
-                ("Age", customer["age_range"]),
-                ("Location", f"{customer['city']}, {customer['state']}"),
-                ("Income", customer["income_bracket"]),
-                ("CLV", f"${customer['clv']:.0f}"),
-                ("Total Orders", customer["total_orders"]),
-                ("Last Purchase", f"{customer['last_purchase_days_ago']}d ago"),
-                ("Return Rate", f"{customer['return_rate']}%"),
-                ("Channel", customer["acquisition_channel"]),
-                ("Interests", customer["lifestyle_interests"]),
-            ]
-            for label, val in detail_rows:
-                st.markdown(
-                    f"<span style='color:#9ca3af;font-size:12px;'>{label}</span><br/>"
-                    f"<span style='font-size:14px;'>{val}</span>",
-                    unsafe_allow_html=True,
+            if "agentic_customer" not in st.session_state:
+                st.session_state.agentic_customer = customers.iloc[0]["customer_id"]
+
+            current_option = id_to_option[st.session_state.agentic_customer]
+            picked = st.selectbox(
+                "Select customer",
+                options,
+                index=options.index(current_option),
+                key="agentic_select",
+                label_visibility="collapsed",
+            )
+            st.session_state.agentic_customer = option_to_id[picked]
+
+            cid = st.session_state.agentic_customer
+            customer = customers[customers["customer_id"] == cid].iloc[0]
+            cust_cart = carts[carts["customer_id"] == cid]
+            cart_total = float(cust_cart.iloc[0]["cart_total"]) if len(cust_cart) else 0
+
+            # Summary info
+            st.markdown(
+                f"**Segment:** {customer['segment'].capitalize()}<br/>"
+                f"**Tier:** {customer['segment'].upper()}<br/>"
+                f"**Last order:** {customer['last_purchase_days_ago']} days ago<br/>"
+                f"**Cart total:** ${cart_total:.0f}",
+                unsafe_allow_html=True,
+            )
+
+            if st.button("Random", use_container_width=True, key="agentic_rand"):
+                st.session_state.agentic_customer = random.choice(
+                    customers["customer_id"].tolist()
                 )
-                st.markdown("", unsafe_allow_html=True)
+                st.rerun()
+
 
     # ---- Assemble context ----
     cid = st.session_state.agentic_customer
     ctx = assemble_context(cid, customers, carts, events, products)
 
     # ---- Arrow 1 ----
-    with col_arrow1:
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
+    with col_a1:
         st.markdown(
-            '<div style="text-align:center;font-size:32px;color:#657786;">&#8594;</div>',
+            '<div style="display:flex;align-items:center;justify-content:center;'
+            'min-height:350px;font-size:24px;color:#4a5568;">&#8594;</div>',
             unsafe_allow_html=True,
         )
 
-    # ---- Node 2: Parameters ----
+    # ---- Node 2: CONTEXT PARAMETERS ----
     with col_params:
-        st.markdown(
-            '<div style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">10 Parameters</div>',
-            unsafe_allow_html=True,
-        )
-
-        params = [
-            ("Cart", ", ".join(it["product_name"] for it in ctx.cart_items) + f" (${ctx.cart_total:.0f})"),
-            ("CLV", f"${ctx.clv:.0f} ({ctx.segment})"),
-            ("Orders", str(ctx.total_orders)),
-            ("Last Purchase", f"{ctx.last_purchase_days_ago} days ago"),
-            ("Return Rate", f"{ctx.return_rate}%"),
-            ("Send Time", ctx.preferred_send_time),
-            ("Engagement", ctx.engagement_summary),
-            ("Channel", ctx.acquisition_channel),
-            ("Income", ctx.income_bracket),
-            ("Location", ctx.location),
-            ("Interests", ", ".join(ctx.lifestyle_interests) if ctx.lifestyle_interests else "—"),
-        ]
-
-        for i, (label, val) in enumerate(params, 1):
+        with st.container(border=True):
             st.markdown(
-                f"<div style='margin-bottom:6px;'>"
-                f"<span style='color:#9ca3af;font-size:11px;'>{i}. {label}</span><br/>"
-                f"<span style='font-size:13px;'>{val}</span>"
-                f"</div>",
+                '<div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;'
+                'color:#9ca3af;font-weight:600;margin-bottom:4px;">Context Parameters</div>',
+                unsafe_allow_html=True,
+            )
+
+            # Legend
+            st.markdown(
+                f'<div style="margin-bottom:12px;font-size:12px;">'
+                f'<span style="color:{_DOT_GREEN};">&#9679;</span> First-party &nbsp;&nbsp;'
+                f'<span style="color:{_DOT_BLUE};">&#9679;</span> Channel &nbsp;&nbsp;'
+                f'<span style="color:{_DOT_RED};">&#9679;</span> Faraday'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
+
+            cart_names = ", ".join(it["product_name"] for it in ctx.cart_items)
+            interests = ", ".join(ctx.lifestyle_interests) if ctx.lifestyle_interests else "—"
+
+            rows = "".join([
+                _param_row(_DOT_GREEN, "Cart items", cart_names),
+                _param_row(_DOT_GREEN, "CLV", f"${ctx.clv:,.0f}"),
+                _param_row(_DOT_GREEN, "Purchase freq", f"{ctx.total_orders} orders"),
+                _param_row(_DOT_GREEN, "Purchase recency", f"{ctx.last_purchase_days_ago} days ago"),
+                _param_row(_DOT_GREEN, "Return rate", f"{ctx.return_rate}%"),
+                _param_row(_DOT_BLUE, "Preferred time", ctx.preferred_send_time.replace("_", " ").title()),
+                _param_row(_DOT_BLUE, "Engagement", ctx.engagement_summary),
+                _param_row(_DOT_BLUE, "Acquisition", ctx.acquisition_channel.replace("_", " ").title()),
+                _param_row(_DOT_RED, "Income", ctx.income_bracket),
+                _param_row(_DOT_RED, "Location", ctx.location),
+                _param_row(_DOT_RED, "Interests", interests),
+            ])
+
+            st.markdown(
+                f'<table style="width:100%;border-collapse:collapse;border:none;">{rows}</table>',
                 unsafe_allow_html=True,
             )
 
     # ---- Arrow 2 ----
-    with col_arrow2:
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
+    with col_a2:
         st.markdown(
-            '<div style="text-align:center;font-size:32px;color:#657786;">&#8594;</div>',
+            '<div style="display:flex;align-items:center;justify-content:center;'
+            'min-height:350px;font-size:24px;color:#4a5568;">&#8594;</div>',
             unsafe_allow_html=True,
         )
 
-    # ---- Node 3: Generated email ----
+    # ---- Node 3: GENERATED EMAIL ----
     with col_email:
-        st.markdown(
-            '<div style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">Generated Email</div>',
-            unsafe_allow_html=True,
-        )
-
-        # Generate / Regenerate button
-        gen_key = f"agentic_result_{cid}"
-        if st.button("Generate Email", use_container_width=True, key="agentic_gen"):
-            with st.spinner("LLM is analyzing customer context and writing email..."):
-                try:
-                    client = HyperbolicClient()
-                    result = generate_agentic_email(client, ctx)
-                    st.session_state[gen_key] = result
-                except Exception as e:
-                    st.error(f"LLM call failed: {e}")
-
-        if gen_key in st.session_state:
-            result = st.session_state[gen_key]
-
-            # Strategy badge
-            color = STRATEGY_COLORS.get(result.strategy, "#657786")
-            label = STRATEGY_LABELS.get(result.strategy, result.strategy)
+        with st.container(border=True):
             st.markdown(
-                f'<span style="display:inline-block;padding:4px 12px;border-radius:20px;'
-                f'background:{color};color:#fff;font-size:12px;font-weight:600;'
-                f'margin-bottom:10px;">{label}</span>',
+                '<div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;'
+                'color:#9ca3af;font-weight:600;margin-bottom:8px;">Generated Email</div>',
                 unsafe_allow_html=True,
             )
 
-            # Reasoning
-            with st.expander("Why this strategy?"):
-                st.write(result.reasoning)
+            gen_key = f"agentic_result_{cid}"
+            regen_requested = st.session_state.pop("_agentic_regen", False)
+            needs_generation = gen_key not in st.session_state or regen_requested
 
-            # Email preview
-            render_email_card(
-                result.subject,
-                result.body,
-                to_name=customers[customers["customer_id"] == cid].iloc[0]["name"],
-            )
+            email_placeholder = st.empty()
 
-            # Regenerate
-            if st.button("Regenerate", key="agentic_regen"):
-                with st.spinner("Regenerating..."):
-                    try:
-                        client = HyperbolicClient()
-                        result = generate_agentic_email(client, ctx)
-                        st.session_state[gen_key] = result
+            if needs_generation:
+                with email_placeholder.container():
+                    st.markdown(
+                        '<div style="display:flex;flex-direction:column;align-items:center;'
+                        'justify-content:center;min-height:300px;color:#9ca3af;">'
+                        '<div style="font-size:14px;margin-top:12px;">Generating email...</div>'
+                        '</div>',
+                        unsafe_allow_html=True,
+                    )
+                    with st.spinner("LLM is analyzing customer and writing email..."):
+                        try:
+                            client = HyperbolicClient()
+                            result = generate_agentic_email(client, ctx)
+                            st.session_state[gen_key] = result
+                            st.rerun()
+                        except Exception as e:
+                            st.error(f"LLM call failed: {e}")
+
+            if gen_key in st.session_state:
+                result = st.session_state[gen_key]
+
+                with email_placeholder.container():
+                    # Email preview
+                    _render_email_full(
+                        result.subject,
+                        result.body,
+                        to_email=customer["email"],
+                    )
+
+                    st.markdown("")
+
+                    # Strategy row
+                    color = STRATEGY_COLORS.get(result.strategy, "#657786")
+                    label = STRATEGY_LABELS.get(result.strategy, result.strategy)
+                    st.markdown(
+                        f'**Strategy:** &nbsp;'
+                        f'<span style="display:inline-block;padding:3px 12px;border-radius:16px;'
+                        f'background:{color};color:#fff;font-size:12px;font-weight:600;">'
+                        f'{label}</span>',
+                        unsafe_allow_html=True,
+                    )
+
+                    with st.expander("Why this strategy?"):
+                        st.write(result.reasoning)
+
+                    if st.button("Regenerate", key="agentic_regen", use_container_width=True):
+                        st.session_state["_agentic_regen"] = True
                         st.rerun()
-                    except Exception as e:
-                        st.error(f"LLM call failed: {e}")
-        else:
-            st.info("Click **Generate Email** to let the LLM analyze this customer and write a personalized email.")
 
 
 # --------------------------------------------------------------------------- #
@@ -682,7 +702,7 @@ def main() -> None:
     st.sidebar.caption("Email testing pipeline walkthrough")
     page = st.sidebar.radio(
         "Page",
-        ["Customer Explorer", "Segmentation Overview", "Email Variants", "Agentic Email"],
+        ["Customer Explorer", "Agentic Email", "Segmentation Overview", "Email Variants"],
         label_visibility="collapsed",
     )
 
@@ -698,12 +718,12 @@ def main() -> None:
 
     if page == "Customer Explorer":
         page_customer_explorer(data)
+    elif page == "Agentic Email":
+        page_agentic(data)
     elif page == "Segmentation Overview":
         page_segmentation(data)
-    elif page == "Email Variants":
-        page_email_variants(data)
     else:
-        page_agentic(data)
+        page_email_variants(data)
 
 
 if __name__ == "__main__":

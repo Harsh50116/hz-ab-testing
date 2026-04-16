@@ -12,6 +12,10 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
+from hz_ab_testing.context import assemble_context
+from hz_ab_testing.agentic import generate_agentic_email
+from hz_ab_testing.llm import HyperbolicClient
+
 DATA_DIR = Path(__file__).parent / "data"
 
 VARIANT_STRATEGY = {
@@ -419,6 +423,237 @@ def page_email_variants(data: dict[str, pd.DataFrame]) -> None:
 
 
 # --------------------------------------------------------------------------- #
+# Page 4 — Agentic Email Generator
+# --------------------------------------------------------------------------- #
+
+STRATEGY_COLORS = {
+    "discount": "#2c5f2d",
+    "urgency": "#e67e22",
+    "social_proof": "#4a90e2",
+    "personalized_rec": "#8e44ad",
+}
+
+STRATEGY_LABELS = {
+    "discount": "Discount",
+    "urgency": "Urgency",
+    "social_proof": "Social Proof",
+    "personalized_rec": "Personalized Rec",
+}
+
+
+def _node_container(title: str, content_fn, *, arrow: bool = False) -> None:
+    """Render a rounded-border node card. content_fn writes the interior via st calls."""
+    if arrow:
+        st.markdown(
+            '<div style="text-align:center;font-size:28px;color:#657786;margin:-8px 0 -8px 0;">&#8594;</div>',
+            unsafe_allow_html=True,
+        )
+    st.markdown(
+        f"""<div style="
+            border: 2px solid #e1e4e8;
+            border-radius: 14px;
+            padding: 20px 18px 14px 18px;
+            background: #181c20;
+            min-height: 280px;
+        ">
+        <div style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">
+            {title}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    content_fn()
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def page_agentic(data: dict[str, pd.DataFrame]) -> None:
+    customers = data["customers"]
+    carts = data["carts"]
+    events = data["events"]
+    products = data["products"]
+
+    st.title("Agentic Email Generator")
+    st.caption(
+        "The LLM receives full customer context and autonomously picks the best strategy + writes the email."
+    )
+
+    # ---- Node 1: Customer selector ----
+    col_cust, col_arrow1, col_params, col_arrow2, col_email = st.columns(
+        [1.2, 0.15, 1.5, 0.15, 2]
+    )
+
+    with col_cust:
+        st.markdown(
+            '<div style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">Customer</div>',
+            unsafe_allow_html=True,
+        )
+        options = customers.apply(
+            lambda r: f"{r['customer_id']} — {r['name']}", axis=1
+        ).tolist()
+        id_to_option = dict(zip(customers["customer_id"], options))
+        option_to_id = {v: k for k, v in id_to_option.items()}
+
+        if "agentic_customer" not in st.session_state:
+            st.session_state.agentic_customer = customers.iloc[0]["customer_id"]
+
+        current_option = id_to_option[st.session_state.agentic_customer]
+        picked = st.selectbox(
+            "Select customer",
+            options,
+            index=options.index(current_option),
+            key="agentic_select",
+            label_visibility="collapsed",
+        )
+        st.session_state.agentic_customer = option_to_id[picked]
+
+        if st.button("Random", use_container_width=True, key="agentic_rand"):
+            st.session_state.agentic_customer = random.choice(
+                customers["customer_id"].tolist()
+            )
+            st.rerun()
+
+        # View customer data toggle
+        cid = st.session_state.agentic_customer
+        customer = customers[customers["customer_id"] == cid].iloc[0]
+
+        with st.expander("View full customer record"):
+            detail_rows = [
+                ("Name", customer["name"]),
+                ("Email", customer["email"]),
+                ("Segment", customer["segment"]),
+                ("Age", customer["age_range"]),
+                ("Location", f"{customer['city']}, {customer['state']}"),
+                ("Income", customer["income_bracket"]),
+                ("CLV", f"${customer['clv']:.0f}"),
+                ("Total Orders", customer["total_orders"]),
+                ("Last Purchase", f"{customer['last_purchase_days_ago']}d ago"),
+                ("Return Rate", f"{customer['return_rate']}%"),
+                ("Channel", customer["acquisition_channel"]),
+                ("Interests", customer["lifestyle_interests"]),
+            ]
+            for label, val in detail_rows:
+                st.markdown(
+                    f"<span style='color:#9ca3af;font-size:12px;'>{label}</span><br/>"
+                    f"<span style='font-size:14px;'>{val}</span>",
+                    unsafe_allow_html=True,
+                )
+                st.markdown("", unsafe_allow_html=True)
+
+    # ---- Assemble context ----
+    cid = st.session_state.agentic_customer
+    ctx = assemble_context(cid, customers, carts, events, products)
+
+    # ---- Arrow 1 ----
+    with col_arrow1:
+        st.markdown("")
+        st.markdown("")
+        st.markdown("")
+        st.markdown("")
+        st.markdown("")
+        st.markdown(
+            '<div style="text-align:center;font-size:32px;color:#657786;">&#8594;</div>',
+            unsafe_allow_html=True,
+        )
+
+    # ---- Node 2: Parameters ----
+    with col_params:
+        st.markdown(
+            '<div style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">10 Parameters</div>',
+            unsafe_allow_html=True,
+        )
+
+        params = [
+            ("Cart", ", ".join(it["product_name"] for it in ctx.cart_items) + f" (${ctx.cart_total:.0f})"),
+            ("CLV", f"${ctx.clv:.0f} ({ctx.segment})"),
+            ("Orders", str(ctx.total_orders)),
+            ("Last Purchase", f"{ctx.last_purchase_days_ago} days ago"),
+            ("Return Rate", f"{ctx.return_rate}%"),
+            ("Send Time", ctx.preferred_send_time),
+            ("Engagement", ctx.engagement_summary),
+            ("Channel", ctx.acquisition_channel),
+            ("Income", ctx.income_bracket),
+            ("Location", ctx.location),
+            ("Interests", ", ".join(ctx.lifestyle_interests) if ctx.lifestyle_interests else "—"),
+        ]
+
+        for i, (label, val) in enumerate(params, 1):
+            st.markdown(
+                f"<div style='margin-bottom:6px;'>"
+                f"<span style='color:#9ca3af;font-size:11px;'>{i}. {label}</span><br/>"
+                f"<span style='font-size:13px;'>{val}</span>"
+                f"</div>",
+                unsafe_allow_html=True,
+            )
+
+    # ---- Arrow 2 ----
+    with col_arrow2:
+        st.markdown("")
+        st.markdown("")
+        st.markdown("")
+        st.markdown("")
+        st.markdown("")
+        st.markdown(
+            '<div style="text-align:center;font-size:32px;color:#657786;">&#8594;</div>',
+            unsafe_allow_html=True,
+        )
+
+    # ---- Node 3: Generated email ----
+    with col_email:
+        st.markdown(
+            '<div style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">Generated Email</div>',
+            unsafe_allow_html=True,
+        )
+
+        # Generate / Regenerate button
+        gen_key = f"agentic_result_{cid}"
+        if st.button("Generate Email", use_container_width=True, key="agentic_gen"):
+            with st.spinner("LLM is analyzing customer context and writing email..."):
+                try:
+                    client = HyperbolicClient()
+                    result = generate_agentic_email(client, ctx)
+                    st.session_state[gen_key] = result
+                except Exception as e:
+                    st.error(f"LLM call failed: {e}")
+
+        if gen_key in st.session_state:
+            result = st.session_state[gen_key]
+
+            # Strategy badge
+            color = STRATEGY_COLORS.get(result.strategy, "#657786")
+            label = STRATEGY_LABELS.get(result.strategy, result.strategy)
+            st.markdown(
+                f'<span style="display:inline-block;padding:4px 12px;border-radius:20px;'
+                f'background:{color};color:#fff;font-size:12px;font-weight:600;'
+                f'margin-bottom:10px;">{label}</span>',
+                unsafe_allow_html=True,
+            )
+
+            # Reasoning
+            with st.expander("Why this strategy?"):
+                st.write(result.reasoning)
+
+            # Email preview
+            render_email_card(
+                result.subject,
+                result.body,
+                to_name=customers[customers["customer_id"] == cid].iloc[0]["name"],
+            )
+
+            # Regenerate
+            if st.button("Regenerate", key="agentic_regen"):
+                with st.spinner("Regenerating..."):
+                    try:
+                        client = HyperbolicClient()
+                        result = generate_agentic_email(client, ctx)
+                        st.session_state[gen_key] = result
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"LLM call failed: {e}")
+        else:
+            st.info("Click **Generate Email** to let the LLM analyze this customer and write a personalized email.")
+
+
+# --------------------------------------------------------------------------- #
 # Main
 # --------------------------------------------------------------------------- #
 def main() -> None:
@@ -434,7 +669,7 @@ def main() -> None:
     st.sidebar.caption("Email testing pipeline walkthrough")
     page = st.sidebar.radio(
         "Page",
-        ["Customer Explorer", "Segmentation Overview", "Email Variants"],
+        ["Customer Explorer", "Segmentation Overview", "Email Variants", "Agentic Email"],
         label_visibility="collapsed",
     )
 
@@ -452,8 +687,10 @@ def main() -> None:
         page_customer_explorer(data)
     elif page == "Segmentation Overview":
         page_segmentation(data)
-    else:
+    elif page == "Email Variants":
         page_email_variants(data)
+    else:
+        page_agentic(data)
 
 
 if __name__ == "__main__":

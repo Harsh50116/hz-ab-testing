@@ -87,6 +87,40 @@ COLD_STATES = [
     ("Rochester", "NY"),
 ]
 
+# ---- New v2 fields ---------------------------------------------------------
+# Last purchase recency (days ago) by segment
+LAST_PURCHASE_RANGE_BY_SEGMENT = {
+    "new": (30, 90),
+    "returning": (5, 30),
+    "vip": (1, 15),
+}
+
+# Return rate (%) by segment — (mean, std_dev) for normal distribution, clamped 0-100
+RETURN_RATE_BY_SEGMENT = {
+    "new": (5.0, 5.0),       # low / unknown history
+    "returning": (12.0, 8.0),  # moderate
+    "vip": (8.0, 6.0),        # generally lower, but varies
+}
+
+# Acquisition channel weights by segment
+ACQUISITION_CHANNELS = ["organic_search", "paid_social", "referral", "email", "direct"]
+ACQUISITION_WEIGHTS_BY_SEGMENT = {
+    "new": [0.20, 0.40, 0.10, 0.15, 0.15],      # new skews paid social
+    "returning": [0.30, 0.15, 0.25, 0.20, 0.10],  # returning skews organic + referral
+    "vip": [0.20, 0.05, 0.30, 0.30, 0.15],        # vip skews referral + email
+}
+
+# Lifestyle interests — pick 1-3 per customer, segment-biased weights
+LIFESTYLE_INTERESTS = [
+    "outdoor_enthusiast", "fashion_forward", "budget_conscious",
+    "athleisure", "sustainable_fashion", "minimalist", "streetwear",
+]
+LIFESTYLE_WEIGHTS_BY_SEGMENT = {
+    "new": [0.15, 0.15, 0.25, 0.15, 0.10, 0.10, 0.10],       # new skews budget_conscious
+    "returning": [0.18, 0.20, 0.10, 0.18, 0.15, 0.10, 0.09],  # returning skews fashion
+    "vip": [0.12, 0.25, 0.03, 0.15, 0.20, 0.15, 0.10],        # vip skews fashion + sustainable
+}
+
 # ---- Timing behavior -------------------------------------------------------
 # Window (days) over which engagement events + abandonment timestamps are spread.
 HISTORY_WINDOW_DAYS = 90

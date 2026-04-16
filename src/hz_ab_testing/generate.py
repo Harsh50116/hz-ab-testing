@@ -13,6 +13,7 @@ from .models import (
     CartItem,
     Customer,
     EngagementEvent,
+    LifestyleInterest,
     Product,
     Segment,
     TimingPool,
@@ -92,14 +93,46 @@ def generate_customers(
         )[0]
         pool = _assign_timing_pool(rng, segment)
 
+        aov = round(rng.uniform(aov_lo, aov_hi), 2)
+        total_orders = rng.randint(ord_lo, ord_hi)
+        clv = round(aov * total_orders, 2)
+
+        lp_lo, lp_hi = config.LAST_PURCHASE_RANGE_BY_SEGMENT[segment]
+        last_purchase_days_ago = rng.randint(lp_lo, lp_hi)
+
+        rr_mean, rr_std = config.RETURN_RATE_BY_SEGMENT[segment]
+        return_rate = round(max(0.0, min(100.0, rng.gauss(rr_mean, rr_std))), 1)
+
+        acq_channel = rng.choices(
+            config.ACQUISITION_CHANNELS,
+            weights=config.ACQUISITION_WEIGHTS_BY_SEGMENT[segment],
+            k=1,
+        )[0]
+
+        n_interests = rng.choices([1, 2, 3], weights=[0.30, 0.50, 0.20], k=1)[0]
+        interests: list[LifestyleInterest] = []
+        available = list(config.LIFESTYLE_INTERESTS)
+        available_weights = list(config.LIFESTYLE_WEIGHTS_BY_SEGMENT[segment])
+        for _ in range(n_interests):
+            chosen = rng.choices(available, weights=available_weights, k=1)[0]
+            interests.append(chosen)
+            idx = available.index(chosen)
+            available.pop(idx)
+            available_weights.pop(idx)
+
         customers.append(
             Customer(
                 customer_id=f"C{i+1:04d}",
                 name=names[i],
                 email=_make_email(rng, names[i], used_emails),
                 segment=segment,
-                avg_order_value=round(rng.uniform(aov_lo, aov_hi), 2),
-                total_orders=rng.randint(ord_lo, ord_hi),
+                avg_order_value=aov,
+                total_orders=total_orders,
+                clv=clv,
+                last_purchase_days_ago=last_purchase_days_ago,
+                return_rate=return_rate,
+                acquisition_channel=acq_channel,
+                lifestyle_interests=interests,
                 preferred_send_time=pool,
                 age_range=age_range,
                 income_bracket=income,

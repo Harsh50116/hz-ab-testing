@@ -1,101 +1,101 @@
-customer_id,name,email,segment,avg_order_value,total_orders,preferred_send_time,age_range,income_bracket,city,state
-C0001,Oliver Brown,oliver.brown1797@yahoo.com,vip,380.78,35,evening_workday,35-44,<50k,Buffalo,NY
-C0002,Rowan White,rowan.white9065@gmail.com,returning,175.24,3,evening_workday,25-34,150k+,Detroit,MI
-C0003,Reese Garcia,reese.garcia5574@gmail.com,new,63.48,0,unknown,45-54,100-150k,Madison,WI
-C0004,Maren Nguyen,maren.nguyen1744@outlook.com,returning,197.83,10,evening_workday,65+,100-150k,Providence,RI
-C0005,Skylar Miller,skylar.miller8690@gmail.com,new,87.92,1,unknown,25-34,<50k,Buffalo,NY
-C0006,Aiden White,aiden.white950@yahoo.com,returning,202.92,3,evening_workday,55-64,100-150k,Milwaukee,WI
-C0007,Kalliope Kim,kalliope.kim2061@yahoo.com,returning,172.37,10,evening_workday,45-54,150k+,Indianapolis,IN
-C0008,Easton Harris,easton.harris8836@yahoo.com,returning,179.81,8,evening_workday,55-64,50-75k,Des Moines,IA
-C0009,Sutton Nguyen,sutton.nguyen3682@gmail.com,vip,288.19,22,evening_workday,35-44,75-100k,Milwaukee,WI
-C0010,Justine Brown,justine.brown515@outlook.com,returning,89.92,5,evening_workday,18-24,75-100k,Boston,MA
-C0011,Tyler Brooks,tyler.brooks9356@icloud.com,returning,146.17,9,weekend_noon,25-34,<50k,Indianapolis,IN
-C0012,Paisley Sanchez,paisley.sanchez5805@hotmail.com,new,72.89,0,unknown,18-24,75-100k,Portland,ME
-C0013,Camila Thompson,camila.thompson1791@yahoo.com,new,55.33,1,unknown,18-24,100-150k,Pittsburgh,PA
-C0014,Sydney Martin,sydney.martin7261@icloud.com,returning,93.71,12,weekend_noon,25-34,50-75k,Burlington,VT
-C0015,Abigail Miller,abigail.miller2725@hotmail.com,vip,335.41,21,weekend_noon,65+,150k+,Boston,MA
-C0016,Cole Lewis,cole.lewis7455@outlook.com,vip,315.36,39,evening_workday,25-34,<50k,New York,NY
-C0017,Teagan Taylor,teagan.taylor999@outlook.com,returning,88.0,11,weekend_noon,25-34,<50k,Chicago,IL
-C0018,Cassandra Sanchez,cassandra.sanchez3045@gmail.com,returning,163.3,12,evening_workday,25-34,150k+,Des Moines,IA
-C0019,Austin Harris,austin.harris9741@gmail.com,vip,378.2,34,evening_workday,18-24,150k+,Detroit,MI
-C0020,Ruby Martin,ruby.martin3347@outlook.com,new,59.09,1,unknown,35-44,150k+,Ann Arbor,MI
-C0021,Charlotte Hall,charlotte.hall153@hotmail.com,returning,166.96,11,weekend_noon,35-44,150k+,Chicago,IL
-C0022,Kaitlyn Sanchez,kaitlyn.sanchez5719@gmail.com,vip,461.37,31,evening_workday,35-44,75-100k,Philadelphia,PA
-C0023,Marissa Lewis,marissa.lewis8667@gmail.com,returning,173.5,10,weekend_noon,45-54,100-150k,Columbus,OH
-C0024,Vivian Jackson,vivian.jackson1754@icloud.com,returning,101.76,6,evening_workday,55-64,<50k,Pittsburgh,PA
-C0025,Lucas Brooks,lucas.brooks4326@icloud.com,new,79.08,0,unknown,25-34,75-100k,Minneapolis,MN
-C0026,Ethan Kim,ethan.kim2144@outlook.com,returning,102.62,9,evening_workday,45-54,<50k,Cleveland,OH
-C0027,Cody Nguyen,cody.nguyen2443@icloud.com,returning,85.04,7,weekend_noon,35-44,<50k,Cleveland,OH
-C0028,Sasha Thompson,sasha.thompson654@outlook.com,returning,109.41,5,evening_workday,35-44,<50k,Buffalo,NY
-C0029,Jessica Lewis,jessica.lewis6659@icloud.com,new,99.96,0,unknown,45-54,150k+,Milwaukee,WI
-C0030,Dylan Lewis,dylan.lewis5443@hotmail.com,vip,436.72,23,weekend_noon,55-64,<50k,Burlington,VT
-C0031,Daniel Kim,daniel.kim3270@hotmail.com,returning,128.95,5,evening_workday,25-34,<50k,Pittsburgh,PA
-C0032,Morgan Thompson,morgan.thompson4574@outlook.com,returning,169.81,8,evening_workday,25-34,50-75k,Portland,ME
-C0033,Christopher Garcia,christopher.garcia4280@yahoo.com,new,86.45,1,unknown,25-34,<50k,Madison,WI
-C0034,Taylor Martin,taylor.martin9933@icloud.com,returning,96.19,11,evening_workday,35-44,100-150k,Rochester,NY
-C0035,Paige White,paige.white8822@yahoo.com,returning,130.99,3,weekend_noon,45-54,<50k,New York,NY
-C0036,Jackson Kim,jackson.kim4921@icloud.com,vip,278.97,34,evening_workday,35-44,100-150k,Minneapolis,MN
-C0037,Jeremiah Patel,jeremiah.patel6212@yahoo.com,returning,166.17,6,weekend_noon,35-44,50-75k,Chicago,IL
-C0038,Natalie Thompson,natalie.thompson9940@outlook.com,returning,145.1,9,weekend_noon,25-34,50-75k,Boston,MA
-C0039,Rylan Nguyen,rylan.nguyen2781@gmail.com,new,62.7,1,unknown,35-44,150k+,Des Moines,IA
-C0040,Leah Miller,leah.miller401@gmail.com,returning,114.28,9,evening_workday,45-54,50-75k,Hartford,CT
-C0041,Bryson Garcia,bryson.garcia9432@yahoo.com,new,97.47,1,unknown,35-44,150k+,Philadelphia,PA
-C0042,Eric Brown,eric.brown1747@hotmail.com,returning,110.64,10,weekend_noon,25-34,100-150k,Hartford,CT
-C0043,Remi Lee,remi.lee7613@icloud.com,returning,218.3,11,evening_workday,25-34,100-150k,Madison,WI
-C0044,Madison Lee,madison.lee8977@hotmail.com,returning,205.61,9,evening_workday,35-44,100-150k,Columbus,OH
-C0045,Landon Hall,landon.hall7940@yahoo.com,returning,118.44,3,weekend_noon,45-54,50-75k,Hartford,CT
-C0046,Jace Brooks,jace.brooks8850@gmail.com,new,51.07,0,unknown,25-34,50-75k,Hartford,CT
-C0047,Samuel Garcia,samuel.garcia8891@hotmail.com,returning,138.21,5,evening_workday,45-54,<50k,Buffalo,NY
-C0048,Savannah Lee,savannah.lee321@icloud.com,new,70.43,0,unknown,55-64,75-100k,Detroit,MI
-C0049,Titus Hall,titus.hall6866@icloud.com,vip,419.21,22,weekend_noon,45-54,100-150k,Chicago,IL
-C0050,Adriana Lee,adriana.lee6625@yahoo.com,returning,197.67,4,evening_workday,35-44,<50k,Providence,RI
-C0051,Victoria Nguyen,victoria.nguyen445@gmail.com,vip,385.68,16,weekend_noon,18-24,50-75k,Madison,WI
-C0052,Isabella Garcia,isabella.garcia5356@outlook.com,vip,423.59,32,evening_workday,18-24,50-75k,Burlington,VT
-C0053,Gianna Miller,gianna.miller8838@gmail.com,returning,219.99,7,evening_workday,25-34,<50k,Cleveland,OH
-C0054,Jaime Jackson,jaime.jackson4052@yahoo.com,returning,197.49,11,weekend_noon,45-54,75-100k,Philadelphia,PA
-C0055,Emily Chen,emily.chen7620@outlook.com,returning,187.37,4,weekend_noon,35-44,<50k,Buffalo,NY
-C0056,Julian Patel,julian.patel5097@gmail.com,new,86.29,1,unknown,45-54,<50k,Pittsburgh,PA
-C0057,Mckenna Taylor,mckenna.taylor3979@gmail.com,returning,177.61,6,evening_workday,25-34,100-150k,Detroit,MI
-C0058,Hannah Nguyen,hannah.nguyen673@outlook.com,vip,350.48,31,weekend_noon,45-54,100-150k,Rochester,NY
-C0059,Liam Patel,liam.patel7103@outlook.com,returning,168.98,9,evening_workday,18-24,50-75k,Minneapolis,MN
-C0060,Kieran Patel,kieran.patel4426@icloud.com,new,104.66,1,unknown,25-34,75-100k,Cleveland,OH
-C0061,Tessa Jackson,tessa.jackson1420@outlook.com,returning,203.43,5,weekend_noon,25-34,100-150k,Ann Arbor,MI
-C0062,Malachi Brown,malachi.brown471@hotmail.com,new,108.08,0,unknown,35-44,50-75k,Ann Arbor,MI
-C0063,Aubrey Jackson,aubrey.jackson4527@icloud.com,returning,81.42,5,weekend_noon,45-54,50-75k,Milwaukee,WI
-C0064,Makayla Taylor,makayla.taylor8042@hotmail.com,returning,191.01,3,weekend_noon,35-44,100-150k,Cleveland,OH
-C0065,Elijah Brown,elijah.brown7754@icloud.com,returning,154.33,8,weekend_noon,45-54,50-75k,Detroit,MI
-C0066,Amelia Taylor,amelia.taylor4119@yahoo.com,vip,218.61,20,evening_workday,25-34,100-150k,Madison,WI
-C0067,Kennedy Miller,kennedy.miller7934@outlook.com,returning,181.44,10,evening_workday,65+,100-150k,Madison,WI
-C0068,William Davis,william.davis4953@gmail.com,returning,179.12,4,evening_workday,45-54,50-75k,Pittsburgh,PA
-C0069,Alyssa Lee,alyssa.lee8043@gmail.com,returning,202.18,11,evening_workday,35-44,100-150k,New York,NY
-C0070,Noah Lee,noah.lee7828@gmail.com,returning,195.1,8,evening_workday,35-44,50-75k,Indianapolis,IN
-C0071,Caleb Harris,caleb.harris9222@outlook.com,returning,91.93,5,evening_workday,35-44,<50k,Ann Arbor,MI
-C0072,Kayla Lewis,kayla.lewis8562@hotmail.com,returning,143.07,9,evening_workday,35-44,100-150k,Cleveland,OH
-C0073,Kevin Hall,kevin.hall9989@gmail.com,returning,212.66,5,weekend_noon,65+,50-75k,Ann Arbor,MI
-C0074,Harper Martin,harper.martin2848@icloud.com,new,46.01,0,unknown,45-54,<50k,Providence,RI
-C0075,Brianna White,brianna.white4633@hotmail.com,returning,89.97,5,evening_workday,35-44,<50k,Rochester,NY
-C0076,Gage Brooks,gage.brooks8923@yahoo.com,vip,387.24,25,evening_workday,45-54,150k+,Ann Arbor,MI
-C0077,Margaret Miller,margaret.miller9750@icloud.com,new,113.7,1,unknown,18-24,100-150k,Philadelphia,PA
-C0078,Ronan Brooks,ronan.brooks8091@hotmail.com,returning,91.26,2,evening_workday,45-54,150k+,Chicago,IL
-C0079,Jasmine Taylor,jasmine.taylor9425@icloud.com,vip,484.25,25,evening_workday,35-44,<50k,Minneapolis,MN
-C0080,Michael Brown,michael.brown2974@icloud.com,returning,141.02,9,weekend_noon,35-44,75-100k,Burlington,VT
-C0081,Brayden Patel,brayden.patel2635@outlook.com,vip,311.73,39,weekend_noon,25-34,50-75k,Indianapolis,IN
-C0082,Joshua Sanchez,joshua.sanchez5154@outlook.com,returning,125.26,8,evening_workday,45-54,75-100k,Detroit,MI
-C0083,Zoe Martin,zoe.martin3074@icloud.com,vip,295.77,39,evening_workday,35-44,75-100k,Boston,MA
-C0084,Lily Tran,lily.tran4720@hotmail.com,new,110.47,1,unknown,25-34,75-100k,New York,NY
-C0085,Ava Morales,ava.morales225@icloud.com,returning,137.12,5,evening_workday,45-54,100-150k,Rochester,NY
-C0086,Trevor Sanchez,trevor.sanchez8166@outlook.com,vip,342.84,25,weekend_noon,35-44,<50k,Pittsburgh,PA
-C0087,Nixon Harris,nixon.harris6285@yahoo.com,returning,209.06,10,weekend_noon,65+,50-75k,Indianapolis,IN
-C0088,Cameron Kim,cameron.kim6799@outlook.com,new,114.74,1,unknown,55-64,50-75k,Buffalo,NY
-C0089,Cortez Garcia,cortez.garcia9502@hotmail.com,new,109.22,1,unknown,45-54,100-150k,Chicago,IL
-C0090,Parker Davis,parker.davis5273@yahoo.com,returning,217.31,5,evening_workday,25-34,100-150k,Milwaukee,WI
-C0091,Brock Davis,brock.davis7750@hotmail.com,returning,134.05,12,evening_workday,55-64,50-75k,Hartford,CT
-C0092,Myles Davis,myles.davis8230@icloud.com,new,66.56,0,unknown,35-44,<50k,Buffalo,NY
-C0093,Ashton Brooks,ashton.brooks2362@hotmail.com,vip,458.7,17,evening_workday,18-24,150k+,Columbus,OH
-C0094,Casey Brown,casey.brown5384@icloud.com,returning,133.2,7,weekend_noon,25-34,100-150k,Providence,RI
-C0095,Julian Sanchez,julian.sanchez1122@yahoo.com,new,90.49,1,unknown,55-64,<50k,Indianapolis,IN
-C0096,Micah Davis,micah.davis1647@hotmail.com,vip,233.24,27,weekend_noon,35-44,<50k,Philadelphia,PA
-C0097,Tatum White,tatum.white7057@yahoo.com,vip,258.14,34,evening_workday,25-34,<50k,New York,NY
-C0098,Kelsey Garcia,kelsey.garcia3946@hotmail.com,returning,207.8,4,weekend_noon,25-34,<50k,Burlington,VT
-C0099,Kylie Taylor,kylie.taylor7623@outlook.com,returning,174.87,4,weekend_noon,35-44,100-150k,Providence,RI
-C0100,Anthony Brooks,anthony.brooks4098@hotmail.com,returning,198.34,5,weekend_noon,65+,50-75k,Milwaukee,WI
+customer_id,name,email,segment,avg_order_value,total_orders,clv,last_purchase_days_ago,return_rate,acquisition_channel,lifestyle_interests,preferred_send_time,age_range,income_bracket,city,state
+C0001,Oliver Brown,oliver.brown9065@gmail.com,vip,215.09,18,3871.62,13,4.6,referral,"['athleisure', 'fashion_forward']",evening_workday,35-44,<50k,Buffalo,NY
+C0002,Rowan White,rowan.white4316@icloud.com,new,61.35,1,61.35,37,0.0,paid_social,['outdoor_enthusiast'],unknown,45-54,75-100k,Pittsburgh,PA
+C0003,Reese Garcia,reese.garcia1833@outlook.com,new,63.88,0,0.0,39,2.9,direct,"['streetwear', 'budget_conscious', 'athleisure']",unknown,55-64,150k+,Des Moines,IA
+C0004,Maren Nguyen,maren.nguyen7788@icloud.com,vip,205.2,39,8002.8,14,10.5,organic_search,"['minimalist', 'outdoor_enthusiast']",weekend_noon,25-34,50-75k,Chicago,IL
+C0005,Skylar Miller,skylar.miller3682@gmail.com,returning,155.5,5,777.5,27,2.1,referral,"['athleisure', 'outdoor_enthusiast']",evening_workday,55-64,50-75k,Des Moines,IA
+C0006,Aiden White,aiden.white8424@yahoo.com,returning,179.1,2,358.2,12,36.2,organic_search,['fashion_forward'],evening_workday,35-44,75-100k,Ann Arbor,MI
+C0007,Kalliope Kim,kalliope.kim6940@hotmail.com,returning,159.95,9,1439.55,12,15.1,organic_search,['budget_conscious'],weekend_noon,25-34,<50k,Indianapolis,IN
+C0008,Easton Harris,easton.harris7351@yahoo.com,returning,136.37,7,954.59,30,0.0,email,['fashion_forward'],evening_workday,45-54,150k+,New York,NY
+C0009,Sutton Nguyen,sutton.nguyen7957@hotmail.com,returning,193.12,10,1931.2,8,40.9,email,"['streetwear', 'sustainable_fashion', 'outdoor_enthusiast']",evening_workday,35-44,150k+,Providence,RI
+C0010,Justine Brown,justine.brown2537@yahoo.com,returning,134.66,9,1211.94,14,21.5,paid_social,"['streetwear', 'athleisure', 'sustainable_fashion']",evening_workday,55-64,<50k,Detroit,MI
+C0011,Tyler Brooks,tyler.brooks3854@hotmail.com,returning,88.0,11,968.0,20,0.0,organic_search,"['outdoor_enthusiast', 'fashion_forward', 'sustainable_fashion']",weekend_noon,35-44,75-100k,New York,NY
+C0012,Paisley Sanchez,paisley.sanchez6485@yahoo.com,returning,138.69,11,1525.59,23,11.7,referral,"['fashion_forward', 'sustainable_fashion', 'outdoor_enthusiast']",weekend_noon,25-34,75-100k,Ann Arbor,MI
+C0013,Camila Thompson,camila.thompson5719@gmail.com,new,114.86,0,0.0,59,0.3,organic_search,"['budget_conscious', 'outdoor_enthusiast']",unknown,35-44,150k+,Chicago,IL
+C0014,Sydney Martin,sydney.martin2201@outlook.com,vip,276.81,8,2214.48,11,2.7,email,['sustainable_fashion'],weekend_noon,25-34,75-100k,Milwaukee,WI
+C0015,Abigail Miller,abigail.miller833@gmail.com,returning,109.49,7,766.43,11,6.0,referral,['minimalist'],evening_workday,45-54,<50k,Pittsburgh,PA
+C0016,Cole Lewis,cole.lewis1233@yahoo.com,new,50.47,1,50.47,40,0.0,email,"['budget_conscious', 'outdoor_enthusiast']",unknown,18-24,50-75k,Providence,RI
+C0017,Teagan Taylor,teagan.taylor2533@yahoo.com,returning,123.16,2,246.32,16,13.5,organic_search,"['minimalist', 'fashion_forward']",evening_workday,35-44,<50k,Milwaukee,WI
+C0018,Cassandra Sanchez,cassandra.sanchez1772@hotmail.com,vip,286.3,34,9734.2,13,12.4,email,"['fashion_forward', 'outdoor_enthusiast']",weekend_noon,55-64,<50k,Burlington,VT
+C0019,Austin Harris,austin.harris6549@icloud.com,vip,277.66,22,6108.52,4,11.9,referral,"['streetwear', 'fashion_forward', 'sustainable_fashion']",evening_workday,25-34,100-150k,Indianapolis,IN
+C0020,Ruby Martin,ruby.martin9933@icloud.com,returning,214.75,6,1288.5,6,12.8,organic_search,"['sustainable_fashion', 'fashion_forward']",evening_workday,18-24,150k+,Boston,MA
+C0021,Charlotte Hall,charlotte.hall5410@icloud.com,returning,152.79,10,1527.9,26,9.5,referral,"['outdoor_enthusiast', 'sustainable_fashion']",evening_workday,25-34,<50k,Ann Arbor,MI
+C0022,Kaitlyn Sanchez,kaitlyn.sanchez6212@yahoo.com,returning,137.18,8,1097.44,27,0.0,organic_search,['budget_conscious'],evening_workday,45-54,50-75k,Pittsburgh,PA
+C0023,Marissa Lewis,marissa.lewis2781@gmail.com,new,64.31,0,0.0,57,6.5,paid_social,"['athleisure', 'budget_conscious']",unknown,35-44,100-150k,Chicago,IL
+C0024,Vivian Jackson,vivian.jackson7785@icloud.com,returning,174.19,5,870.95,30,1.3,organic_search,['fashion_forward'],weekend_noon,25-34,100-150k,Rochester,NY
+C0025,Lucas Brooks,lucas.brooks3586@yahoo.com,new,86.05,1,86.05,61,2.7,referral,"['minimalist', 'sustainable_fashion', 'athleisure']",unknown,35-44,150k+,Philadelphia,PA
+C0026,Ethan Kim,ethan.kim5199@hotmail.com,new,113.4,0,0.0,59,6.7,organic_search,"['budget_conscious', 'athleisure']",unknown,35-44,75-100k,Des Moines,IA
+C0027,Cody Nguyen,cody.nguyen3920@outlook.com,new,75.67,0,0.0,77,8.5,email,"['fashion_forward', 'minimalist', 'budget_conscious']",unknown,35-44,150k+,Des Moines,IA
+C0028,Sasha Thompson,sasha.thompson6798@hotmail.com,returning,91.28,4,365.12,12,5.3,paid_social,['fashion_forward'],weekend_noon,25-34,50-75k,Chicago,IL
+C0029,Jessica Lewis,jessica.lewis6390@hotmail.com,returning,206.68,11,2273.48,27,28.4,referral,"['streetwear', 'fashion_forward']",evening_workday,35-44,50-75k,Columbus,OH
+C0030,Dylan Lewis,dylan.lewis7658@yahoo.com,returning,118.21,9,1063.89,5,14.0,paid_social,"['sustainable_fashion', 'athleisure']",evening_workday,45-54,150k+,Madison,WI
+C0031,Daniel Kim,daniel.kim6212@outlook.com,vip,188.67,35,6603.45,3,10.5,referral,"['athleisure', 'fashion_forward']",weekend_noon,18-24,50-75k,Madison,WI
+C0032,Morgan Thompson,morgan.thompson509@yahoo.com,new,41.55,0,0.0,90,2.6,paid_social,"['sustainable_fashion', 'athleisure']",unknown,25-34,<50k,Cleveland,OH
+C0033,Christopher Garcia,christopher.garcia2684@outlook.com,returning,96.01,5,480.05,19,7.7,organic_search,"['sustainable_fashion', 'outdoor_enthusiast']",evening_workday,35-44,50-75k,Boston,MA
+C0034,Taylor Martin,taylor.martin9838@gmail.com,returning,132.54,5,662.7,7,0.0,referral,"['fashion_forward', 'sustainable_fashion', 'budget_conscious']",weekend_noon,55-64,75-100k,Boston,MA
+C0035,Paige White,paige.white7533@yahoo.com,new,74.27,1,74.27,34,0.4,email,"['outdoor_enthusiast', 'streetwear', 'athleisure']",unknown,45-54,50-75k,Ann Arbor,MI
+C0036,Jackson Kim,jackson.kim1420@outlook.com,returning,155.34,9,1398.06,19,11.7,paid_social,"['fashion_forward', 'minimalist']",weekend_noon,65+,50-75k,Des Moines,IA
+C0037,Jeremiah Patel,jeremiah.patel9768@outlook.com,vip,287.65,39,11218.35,14,4.8,referral,['fashion_forward'],weekend_noon,45-54,75-100k,Hartford,CT
+C0038,Natalie Thompson,natalie.thompson4821@yahoo.com,returning,148.4,5,742.0,27,20.2,referral,"['budget_conscious', 'outdoor_enthusiast']",weekend_noon,55-64,<50k,Des Moines,IA
+C0039,Rylan Nguyen,rylan.nguyen5170@gmail.com,returning,154.33,8,1234.64,28,4.9,referral,"['fashion_forward', 'sustainable_fashion']",evening_workday,25-34,75-100k,Hartford,CT
+C0040,Leah Miller,leah.miller4953@gmail.com,new,62.12,1,62.12,36,3.6,email,['budget_conscious'],unknown,25-34,100-150k,Burlington,VT
+C0041,Bryson Garcia,bryson.garcia3021@gmail.com,new,84.27,0,0.0,70,8.9,direct,"['budget_conscious', 'athleisure']",unknown,25-34,150k+,Buffalo,NY
+C0042,Eric Brown,eric.brown9144@hotmail.com,returning,160.78,12,1929.36,6,5.2,organic_search,"['streetwear', 'outdoor_enthusiast', 'fashion_forward']",evening_workday,18-24,<50k,Indianapolis,IN
+C0043,Remi Lee,remi.lee3405@yahoo.com,new,76.04,1,76.04,49,14.7,paid_social,"['athleisure', 'sustainable_fashion']",unknown,25-34,75-100k,Rochester,NY
+C0044,Madison Lee,madison.lee4633@hotmail.com,returning,80.37,9,723.33,27,0.0,referral,['fashion_forward'],evening_workday,25-34,<50k,Philadelphia,PA
+C0045,Landon Hall,landon.hall978@yahoo.com,returning,172.57,5,862.85,18,16.3,organic_search,['outdoor_enthusiast'],weekend_noon,55-64,100-150k,Hartford,CT
+C0046,Jace Brooks,jace.brooks8091@hotmail.com,new,63.09,0,0.0,59,7.4,referral,"['streetwear', 'budget_conscious']",unknown,45-54,75-100k,Rochester,NY
+C0047,Samuel Garcia,samuel.garcia2871@hotmail.com,returning,83.62,5,418.1,26,17.4,direct,"['sustainable_fashion', 'fashion_forward', 'outdoor_enthusiast']",weekend_noon,55-64,100-150k,New York,NY
+C0048,Savannah Lee,savannah.lee2635@outlook.com,returning,168.87,9,1519.83,7,3.0,referral,"['fashion_forward', 'outdoor_enthusiast']",weekend_noon,55-64,50-75k,Columbus,OH
+C0049,Titus Hall,titus.hall8890@hotmail.com,returning,157.01,9,1413.09,7,9.2,direct,"['athleisure', 'streetwear']",weekend_noon,25-34,150k+,Indianapolis,IN
+C0050,Adriana Lee,adriana.lee7942@gmail.com,returning,141.89,2,283.78,11,18.5,organic_search,['fashion_forward'],evening_workday,35-44,75-100k,Portland,ME
+C0051,Victoria Nguyen,victoria.nguyen4782@icloud.com,returning,81.91,8,655.28,7,14.4,organic_search,"['athleisure', 'outdoor_enthusiast', 'streetwear']",evening_workday,45-54,100-150k,Rochester,NY
+C0052,Isabella Garcia,isabella.garcia1144@outlook.com,new,59.5,0,0.0,54,14.5,organic_search,"['sustainable_fashion', 'outdoor_enthusiast']",unknown,45-54,150k+,Cleveland,OH
+C0053,Gianna Miller,gianna.miller7936@outlook.com,new,61.37,0,0.0,48,3.6,paid_social,"['minimalist', 'budget_conscious']",unknown,25-34,100-150k,Cleveland,OH
+C0054,Jaime Jackson,jaime.jackson6247@hotmail.com,returning,217.31,5,1086.55,23,0.0,paid_social,"['budget_conscious', 'fashion_forward', 'athleisure']",weekend_noon,25-34,150k+,Madison,WI
+C0055,Emily Chen,emily.chen2530@gmail.com,vip,368.86,14,5164.04,14,9.5,direct,['fashion_forward'],evening_workday,35-44,<50k,Buffalo,NY
+C0056,Julian Patel,julian.patel8865@gmail.com,returning,199.25,12,2391.0,22,9.0,paid_social,"['sustainable_fashion', 'athleisure']",weekend_noon,25-34,100-150k,Providence,RI
+C0057,Mckenna Taylor,mckenna.taylor4907@gmail.com,new,119.79,0,0.0,57,13.4,email,['fashion_forward'],unknown,35-44,150k+,Hartford,CT
+C0058,Hannah Nguyen,hannah.nguyen6268@icloud.com,returning,154.36,11,1697.96,26,10.2,email,['outdoor_enthusiast'],evening_workday,25-34,50-75k,New York,NY
+C0059,Liam Patel,liam.patel5662@icloud.com,new,76.89,1,76.89,59,5.0,email,"['athleisure', 'outdoor_enthusiast', 'budget_conscious']",unknown,55-64,<50k,Indianapolis,IN
+C0060,Kieran Patel,kieran.patel4838@gmail.com,returning,219.91,9,1979.19,8,13.1,organic_search,"['athleisure', 'streetwear']",evening_workday,45-54,75-100k,Cleveland,OH
+C0061,Tessa Jackson,tessa.jackson9947@outlook.com,vip,418.29,11,4601.19,15,2.5,direct,['minimalist'],weekend_noon,25-34,75-100k,Detroit,MI
+C0062,Malachi Brown,malachi.brown547@icloud.com,returning,172.29,4,689.16,25,6.2,organic_search,"['outdoor_enthusiast', 'minimalist']",weekend_noon,35-44,100-150k,Portland,ME
+C0063,Aubrey Jackson,aubrey.jackson7895@outlook.com,returning,104.59,4,418.36,30,0.0,referral,"['minimalist', 'fashion_forward', 'sustainable_fashion']",weekend_noon,18-24,50-75k,Buffalo,NY
+C0064,Makayla Taylor,makayla.taylor9132@outlook.com,new,46.02,0,0.0,85,1.7,referral,"['budget_conscious', 'minimalist']",unknown,45-54,75-100k,Minneapolis,MN
+C0065,Elijah Brown,elijah.brown411@icloud.com,returning,174.2,12,2090.4,13,0.0,direct,['fashion_forward'],evening_workday,18-24,75-100k,Detroit,MI
+C0066,Amelia Taylor,amelia.taylor610@outlook.com,vip,383.33,37,14183.21,15,2.3,email,"['outdoor_enthusiast', 'fashion_forward']",weekend_noon,25-34,75-100k,Madison,WI
+C0067,Kennedy Miller,kennedy.miller6687@outlook.com,vip,325.17,34,11055.78,10,7.8,referral,['athleisure'],evening_workday,18-24,150k+,Pittsburgh,PA
+C0068,William Davis,william.davis2002@hotmail.com,returning,130.78,12,1569.36,16,7.4,referral,"['fashion_forward', 'athleisure', 'outdoor_enthusiast']",evening_workday,25-34,75-100k,Milwaukee,WI
+C0069,Alyssa Lee,alyssa.lee3818@outlook.com,returning,190.15,5,950.75,9,13.2,email,"['athleisure', 'minimalist']",evening_workday,35-44,75-100k,Portland,ME
+C0070,Noah Lee,noah.lee423@yahoo.com,new,51.58,0,0.0,64,1.7,paid_social,['athleisure'],unknown,18-24,100-150k,Rochester,NY
+C0071,Caleb Harris,caleb.harris3630@icloud.com,returning,97.75,8,782.0,21,14.2,paid_social,"['athleisure', 'fashion_forward']",evening_workday,35-44,<50k,Hartford,CT
+C0072,Kayla Lewis,kayla.lewis1324@outlook.com,returning,219.8,8,1758.4,18,13.9,referral,"['minimalist', 'outdoor_enthusiast']",evening_workday,25-34,75-100k,Des Moines,IA
+C0073,Kevin Hall,kevin.hall9034@yahoo.com,new,86.83,1,86.83,54,11.1,paid_social,"['outdoor_enthusiast', 'sustainable_fashion']",unknown,25-34,75-100k,Philadelphia,PA
+C0074,Harper Martin,harper.martin7771@gmail.com,returning,182.15,7,1275.05,18,11.7,paid_social,['streetwear'],evening_workday,35-44,100-150k,Hartford,CT
+C0075,Brianna White,brianna.white6930@gmail.com,returning,193.65,10,1936.5,6,3.2,paid_social,['fashion_forward'],weekend_noon,18-24,<50k,Philadelphia,PA
+C0076,Gage Brooks,gage.brooks4565@icloud.com,vip,229.51,38,8721.38,4,4.0,email,"['sustainable_fashion', 'outdoor_enthusiast']",evening_workday,25-34,<50k,Rochester,NY
+C0077,Margaret Miller,margaret.miller5063@outlook.com,returning,165.9,12,1990.8,22,30.2,email,['fashion_forward'],weekend_noon,55-64,150k+,Cleveland,OH
+C0078,Ronan Brooks,ronan.brooks2579@outlook.com,returning,99.86,12,1198.32,5,15.0,organic_search,"['fashion_forward', 'athleisure']",evening_workday,55-64,75-100k,Burlington,VT
+C0079,Jasmine Taylor,jasmine.taylor4476@yahoo.com,returning,87.37,4,349.48,29,3.2,organic_search,"['athleisure', 'fashion_forward']",evening_workday,45-54,75-100k,Minneapolis,MN
+C0080,Michael Brown,michael.brown9820@gmail.com,new,94.26,1,94.26,63,0.0,referral,['budget_conscious'],unknown,25-34,<50k,Pittsburgh,PA
+C0081,Brayden Patel,brayden.patel5803@gmail.com,returning,120.52,3,361.56,5,3.5,organic_search,"['fashion_forward', 'athleisure']",weekend_noon,55-64,100-150k,Chicago,IL
+C0082,Joshua Sanchez,joshua.sanchez5322@yahoo.com,returning,123.83,8,990.64,23,12.1,paid_social,"['fashion_forward', 'athleisure']",evening_workday,35-44,75-100k,New York,NY
+C0083,Zoe Martin,zoe.martin5563@yahoo.com,new,68.95,1,68.95,84,9.2,paid_social,['minimalist'],unknown,35-44,100-150k,Rochester,NY
+C0084,Lily Tran,lily.tran3233@yahoo.com,returning,107.15,7,750.05,16,17.3,email,"['minimalist', 'fashion_forward', 'outdoor_enthusiast']",evening_workday,18-24,75-100k,Burlington,VT
+C0085,Ava Morales,ava.morales2474@hotmail.com,new,79.53,1,79.53,73,10.7,referral,"['minimalist', 'athleisure']",unknown,25-34,100-150k,Philadelphia,PA
+C0086,Trevor Sanchez,trevor.sanchez4704@gmail.com,returning,129.27,3,387.81,14,7.3,referral,['fashion_forward'],weekend_noon,35-44,100-150k,Columbus,OH
+C0087,Nixon Harris,nixon.harris7382@gmail.com,new,77.02,0,0.0,58,10.5,organic_search,"['budget_conscious', 'streetwear']",unknown,35-44,75-100k,Philadelphia,PA
+C0088,Cameron Kim,cameron.kim4635@hotmail.com,new,91.69,0,0.0,45,1.5,email,"['budget_conscious', 'sustainable_fashion', 'fashion_forward']",unknown,65+,<50k,Minneapolis,MN
+C0089,Cortez Garcia,cortez.garcia1336@icloud.com,returning,126.85,7,887.95,8,4.6,organic_search,"['streetwear', 'athleisure', 'outdoor_enthusiast']",weekend_noon,45-54,<50k,Minneapolis,MN
+C0090,Parker Davis,parker.davis5382@yahoo.com,new,92.97,0,0.0,68,3.2,email,['athleisure'],unknown,25-34,75-100k,Milwaukee,WI
+C0091,Brock Davis,brock.davis2539@gmail.com,new,80.68,0,0.0,53,0.6,paid_social,"['fashion_forward', 'streetwear']",unknown,18-24,100-150k,Des Moines,IA
+C0092,Myles Davis,myles.davis2963@icloud.com,returning,153.71,12,1844.52,15,30.3,email,"['athleisure', 'outdoor_enthusiast']",weekend_noon,35-44,75-100k,Pittsburgh,PA
+C0093,Ashton Brooks,ashton.brooks7685@yahoo.com,new,69.14,0,0.0,58,0.0,email,['fashion_forward'],unknown,45-54,<50k,Burlington,VT
+C0094,Casey Brown,casey.brown7874@outlook.com,returning,133.46,10,1334.6,18,3.4,direct,"['sustainable_fashion', 'outdoor_enthusiast', 'fashion_forward']",evening_workday,65+,75-100k,Ann Arbor,MI
+C0095,Julian Sanchez,julian.sanchez7392@outlook.com,returning,91.74,4,366.96,13,2.9,email,['streetwear'],evening_workday,45-54,75-100k,Pittsburgh,PA
+C0096,Micah Davis,micah.davis2255@gmail.com,vip,498.25,31,15445.75,4,10.3,organic_search,"['minimalist', 'sustainable_fashion', 'athleisure']",evening_workday,18-24,75-100k,Cleveland,OH
+C0097,Tatum White,tatum.white3894@outlook.com,returning,142.8,2,285.6,7,17.5,organic_search,"['athleisure', 'fashion_forward', 'minimalist']",weekend_noon,45-54,<50k,Indianapolis,IN
+C0098,Kelsey Garcia,kelsey.garcia4773@hotmail.com,returning,95.52,9,859.68,24,12.7,referral,"['athleisure', 'sustainable_fashion']",evening_workday,35-44,100-150k,Hartford,CT
+C0099,Kylie Taylor,kylie.taylor714@hotmail.com,returning,91.99,7,643.93,7,21.6,email,"['outdoor_enthusiast', 'minimalist']",weekend_noon,25-34,50-75k,Milwaukee,WI
+C0100,Anthony Brooks,anthony.brooks5547@yahoo.com,vip,257.16,14,3600.24,13,5.8,email,"['fashion_forward', 'athleisure']",evening_workday,45-54,50-75k,Providence,RI

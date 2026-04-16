@@ -10,6 +10,13 @@ Segment = Literal["new", "returning", "vip"]
 TimingPool = Literal["evening_workday", "weekend_noon", "unknown"]
 AgeRange = Literal["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
 IncomeBracket = Literal["<50k", "50-75k", "75-100k", "100-150k", "150k+"]
+AcquisitionChannel = Literal[
+    "organic_search", "paid_social", "referral", "email", "direct",
+]
+LifestyleInterest = Literal[
+    "outdoor_enthusiast", "fashion_forward", "budget_conscious",
+    "athleisure", "sustainable_fashion", "minimalist", "streetwear",
+]
 ProductCategory = Literal[
     "jacket", "sweater", "coat", "boots", "scarf", "gloves",
     "hat", "thermal", "pants", "socks",
@@ -33,6 +40,11 @@ class Customer(BaseModel):
     segment: Segment
     avg_order_value: float
     total_orders: int
+    clv: float  # derived: avg_order_value * total_orders
+    last_purchase_days_ago: int
+    return_rate: float  # percentage 0-100
+    acquisition_channel: AcquisitionChannel
+    lifestyle_interests: list[LifestyleInterest]
     preferred_send_time: TimingPool  # ground truth label
     age_range: AgeRange
     income_bracket: IncomeBracket

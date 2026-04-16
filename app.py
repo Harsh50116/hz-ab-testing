@@ -5,7 +5,13 @@ Run with: streamlit run app.py
 from __future__ import annotations
 
 import random
+import sys
 from pathlib import Path
+
+# Ensure the src/ package is importable (needed on Streamlit Cloud).
+_SRC = Path(__file__).parent / "src"
+if str(_SRC) not in sys.path:
+    sys.path.insert(0, str(_SRC))
 
 import pandas as pd
 import plotly.express as px
